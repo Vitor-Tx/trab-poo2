@@ -1,6 +1,8 @@
 package entities;
 
-public abstract class Personagem {
+import java.util.Observable;
+
+public abstract class Personagem extends Observable {
 
     private Pular pular;
     private Correr correr;
@@ -9,9 +11,12 @@ public abstract class Personagem {
     private Estado estado;
     private Integer saude;
 
+    private Posicao posicao;
+
     public Personagem() {
         this.estado = new EstadoNormal(this);
         this.saude = 70;
+        this.posicao = new Posicao(0, 0, 1);
     }
 
     public void setEstragetias(Pular pular, Correr correr, Atacar atacar) {
@@ -54,5 +59,14 @@ public abstract class Personagem {
 
     public void receberVida(Integer vida) {
         estado.receberVida(vida);
+    }
+
+    public Posicao getPosicao() {
+        return posicao;
+    }
+
+    public void mostraPos() {
+        setChanged();
+        notifyObservers();
     }
 }

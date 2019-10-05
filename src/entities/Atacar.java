@@ -2,5 +2,5 @@ package entities;
 
 public interface Atacar {
 
-    void atacar();
+    int forca();
 }
