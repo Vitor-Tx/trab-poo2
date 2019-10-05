@@ -1,6 +1,6 @@
 package entities;
 
-public interface Correr {
+public interface Velocidade {
 
     void correr();
 }

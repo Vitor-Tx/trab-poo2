@@ -1,6 +1,6 @@
 package entities;
 
-public class PularAlto implements Pular {
+public class PuloAlto implements Pulo {
 
     @Override
     public void pular() {

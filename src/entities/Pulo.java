@@ -1,6 +1,6 @@
 package entities;
 
-public interface Pular {
+public interface Pulo {
 
     void pular();
 }

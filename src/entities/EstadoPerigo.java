@@ -4,7 +4,7 @@ public class EstadoPerigo extends Estado {
 
     public EstadoPerigo(Personagem personagem) {
         super(personagem);
-        personagem.setEstragetias(new PularBaixo(), new CorrerDevagar(), new AtacarFraco());
+        personagem.setEstragetias(new PuloBaixo(), new VelocidadeDevagar(), new AtaqueFraco());
     }
 
     @Override

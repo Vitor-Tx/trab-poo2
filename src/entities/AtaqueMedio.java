@@ -1,9 +1,9 @@
 package entities;
 
-public class AtacarForte implements Atacar {
+public class AtaqueMedio implements Ataque {
 
     @Override
     public int forca() {
-        return 10;
+        return 5;
     }
 }

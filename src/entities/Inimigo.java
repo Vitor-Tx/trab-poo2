@@ -7,13 +7,13 @@ public class Inimigo implements Observer {
 
     private Posicao posicao;
 
-    private Atacar ataque;
+    private Ataque ataque;
 
     private Integer saude;
 
     public Inimigo() {
         this.posicao = new Posicao(10, 10, 1);
-        this.ataque = new AtacarFraco();
+        this.ataque = new AtaqueFraco();
     }
 
     public Posicao getPosicao() {

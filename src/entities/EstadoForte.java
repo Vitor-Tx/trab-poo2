@@ -4,7 +4,7 @@ public class EstadoForte extends Estado {
 
     public EstadoForte(Personagem personagem) {
         super(personagem);
-        this.getPersonagem().setEstragetias(new PularAlto(), new CorrerRapido(), new AtacarForte());
+        this.getPersonagem().setEstragetias(new PuloAlto(), new VelocidadeRapida(), new AtaqueForte());
     }
 
     @Override

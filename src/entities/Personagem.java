@@ -1,12 +1,14 @@
 package entities;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Observable;
 
-public abstract class Personagem extends Observable {
+public abstract class Personagem extends Observable implements KeyListener {
 
-    private Pular pular;
-    private Correr correr;
-    private Atacar atacar;
+    private Pulo pulo;
+    private Velocidade velocidade;
+    private Ataque ataque;
 
     private Estado estado;
     private Integer saude;
@@ -19,22 +21,22 @@ public abstract class Personagem extends Observable {
         this.posicao = new Posicao(0, 0, 1);
     }
 
-    public void setEstragetias(Pular pular, Correr correr, Atacar atacar) {
-        this.pular = pular;
-        this.correr = correr;
-        this.atacar = atacar;
+    public void setEstragetias(Pulo pulo, Velocidade velocidade, Ataque ataque) {
+        this.pulo = pulo;
+        this.velocidade = velocidade;
+        this.ataque = ataque;
     }
 
-    public Pular getPular() {
-        return pular;
+    public Pulo getPulo() {
+        return pulo;
     }
 
-    public Correr getCorrer() {
-        return correr;
+    public Velocidade getVelocidade() {
+        return velocidade;
     }
 
-    public Atacar getAtacar() {
-        return atacar;
+    public Ataque getAtaque() {
+        return ataque;
     }
 
     public Estado getEstado() {
@@ -68,5 +70,21 @@ public abstract class Personagem extends Observable {
     public void mostraPos() {
         setChanged();
         notifyObservers();
+        System.out.println(String.format("\nPosição jogador\nX: %d \tY: %d\n", posicao.getX(), posicao.getY()));
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT)
+            posicao.movOeste();
+
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+            posicao.movLeste();
+
+        if (e.getKeyCode() == KeyEvent.VK_UP)
+            posicao.movNorte();
+
+        if (e.getKeyCode() == KeyEvent.VK_DOWN)
+            posicao.movSul();
     }
 }

@@ -4,7 +4,7 @@ public class EstadoNormal extends Estado {
 
     public EstadoNormal(Personagem personagem) {
         super(personagem);
-        personagem.setEstragetias(new PularMedio(), new CorrerMedio(), new AtacarMedio());
+        personagem.setEstragetias(new PuloMedio(), new VelocidadeMedia(), new AtaqueMedio());
     }
 
     @Override
