@@ -1,10 +1,14 @@
 package entities;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import entities.estado.Estado;
+import entities.estado.impl.EstadoNormal;
+import entities.estrategias.Ataque;
+import entities.estrategias.Pulo;
+import entities.estrategias.Velocidade;
+
 import java.util.Observable;
 
-public abstract class Personagem extends Observable implements KeyListener {
+public class Personagem extends Observable {
 
     private Pulo pulo;
     private Velocidade velocidade;
@@ -17,8 +21,6 @@ public abstract class Personagem extends Observable implements KeyListener {
 
     public Personagem() {
         this.estado = new EstadoNormal(this);
-        this.saude = 70;
-        this.posicao = new Posicao(0, 0, 1);
     }
 
     public void setEstragetias(Pulo pulo, Velocidade velocidade, Ataque ataque) {
@@ -67,24 +69,12 @@ public abstract class Personagem extends Observable implements KeyListener {
         return posicao;
     }
 
+    public void setPosicao(Posicao posicao) {
+        this.posicao = posicao;
+    }
+
     public void mostraPos() {
         setChanged();
         notifyObservers();
-        System.out.println(String.format("\nPosição jogador\nX: %d \tY: %d\n", posicao.getX(), posicao.getY()));
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT)
-            posicao.movOeste();
-
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-            posicao.movLeste();
-
-        if (e.getKeyCode() == KeyEvent.VK_UP)
-            posicao.movNorte();
-
-        if (e.getKeyCode() == KeyEvent.VK_DOWN)
-            posicao.movSul();
     }
 }

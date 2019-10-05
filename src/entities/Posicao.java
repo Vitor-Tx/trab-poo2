@@ -31,12 +31,12 @@ public class Posicao {
     }
 
     public void movNorte() {
-        this.y += vel;
+        this.y -= vel;
 //        toString();
     }
 
     public void movSul() {
-        this.y -= vel;
+        this.y += vel;
 //        toString();
     }
 

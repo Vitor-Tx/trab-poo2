@@ -1,5 +1,8 @@
 package entities;
 
+import entities.estrategias.Ataque;
+import entities.estrategias.impl.AtaqueFraco;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -11,8 +14,8 @@ public class Inimigo implements Observer {
 
     private Integer saude;
 
-    public Inimigo() {
-        this.posicao = new Posicao(10, 10, 1);
+    public Inimigo(int x, int y) {
+        this.posicao = new Posicao(x, y, 1);
         this.ataque = new AtaqueFraco();
     }
 
@@ -30,14 +33,14 @@ public class Inimigo implements Observer {
             Personagem p = (Personagem) o;
 
             if ((posicao.getX() - p.getPosicao().getX() == 0) && (posicao.getY() - p.getPosicao().getY() == 0)) {
+                System.out.println("\nInimigo " + this + " atacou personagem " + p);
                 atacar(p);
-                System.out.println("Inimigo " + this + " atacou personagem " + p);
             } else {
                 if (p.getPosicao().getX() > posicao.getX()) posicao.movLeste();
                 else posicao.movOeste();
 
-                if (p.getPosicao().getY() > posicao.getY()) posicao.movNorte();
-                else posicao.movSul();
+                if (p.getPosicao().getY() > posicao.getY()) posicao.movSul();
+                else posicao.movNorte();
             }
         }
     }

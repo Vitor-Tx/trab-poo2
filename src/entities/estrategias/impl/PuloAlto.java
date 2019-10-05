@@ -1,4 +1,6 @@
-package entities;
+package entities.estrategias.impl;
+
+import entities.estrategias.Pulo;
 
 public class PuloAlto implements Pulo {
 

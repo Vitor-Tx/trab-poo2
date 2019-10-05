@@ -1,4 +1,6 @@
-package entities;
+package entities.estrategias.impl;
+
+import entities.estrategias.Ataque;
 
 public class AtaqueFraco implements Ataque {
 

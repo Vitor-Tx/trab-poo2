@@ -1,4 +1,4 @@
-package entities;
+package entities.estrategias;
 
 public interface Pulo {
 
