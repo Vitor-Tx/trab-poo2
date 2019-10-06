@@ -1,10 +1,10 @@
 package entities;
 
+import entities.auxiliars.Movimento;
 import entities.estado.impl.EstadoMorto;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Scanner;
 
 public class Jogo extends JPanel {
 
@@ -16,6 +16,8 @@ public class Jogo extends JPanel {
 
     public static final int largura = 700;
     public static final int altura = 700;
+
+    public static final String hurtUrl = System.getProperty("user.dir") + "/hurt.wav";
 
     public Jogo() {
         movimento = new Movimento(largura, altura);

@@ -1,5 +1,7 @@
 package entities;
 
+import entities.auxiliars.AudioPlayer;
+import entities.auxiliars.Posicao;
 import entities.estado.Estado;
 import entities.estado.impl.EstadoNormal;
 import entities.estrategias.Ataque;
@@ -58,6 +60,7 @@ public class Personagem extends Observable {
     }
 
     public void receberDano(Integer dano) {
+        AudioPlayer.playSound(Jogo.hurtUrl);
         estado.receberDano(dano);
     }
 

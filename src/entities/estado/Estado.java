@@ -2,16 +2,23 @@ package entities.estado;
 
 import entities.Jogo;
 import entities.Personagem;
-import entities.Posicao;
+import entities.estado.impl.EstadoForte;
+import entities.estado.impl.EstadoMorto;
+import entities.estado.impl.EstadoNormal;
+import entities.estado.impl.EstadoPerigo;
 
 public abstract class Estado {
+
+    public static final Integer limiteMaxVidaPerigo = 30;
+    public static final Integer limiteMaxVidaNormal = 100;
+    public static final Integer limiteMaxVidaForte = 150;
 
     private Personagem personagem;
 
     public Estado(Personagem personagem) {
         this.personagem = personagem;
 
-        if (personagem.getSaude() == null) this.personagem.setSaude(100);
+        if (personagem.getSaude() == null) this.personagem.setSaude(limiteMaxVidaNormal);
     }
 
     public void receberDano(Integer dano) {
@@ -28,21 +35,20 @@ public abstract class Estado {
         verificaAlteracaoEstado();
     }
 
-    public void atualizaMovimento() {
-        int x = personagem.getPosicao().getX();
-        int y = personagem.getPosicao().getY();
-        int vel;
-
-        if (personagem.getVelocidade() == null) {
-            vel = 0;
+    private void verificaAlteracaoEstado() {
+        Integer s = personagem.getSaude();
+        if (s <= 0) {
+            this.personagem.setEstado(new EstadoMorto(personagem));
+        } else if (s <= limiteMaxVidaPerigo) {
+            this.personagem.setEstado(new EstadoPerigo(personagem));
+        } else if (s <= limiteMaxVidaNormal) {
+            this.personagem.setEstado(new EstadoNormal(personagem));
+        } else if (s <= limiteMaxVidaForte) {
+            this.personagem.setEstado(new EstadoForte(personagem));
         } else {
-            vel = personagem.getVelocidade().vel();
+            System.out.println("ESTADO DIVINO FODAO!!!\nOHHHHHHHHHH OHHHHHHHHH ÓOOHHHH...");
         }
-
-        personagem.setPosicao(new Posicao(x, y, vel));
     }
-
-    protected abstract void verificaAlteracaoEstado();
 
     public Personagem getPersonagem() {
         return personagem;

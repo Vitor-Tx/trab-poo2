@@ -11,13 +11,5 @@ public class EstadoMorto extends Estado {
         personagem.deleteObservers();
 
         System.out.println("\nPERSONAGEM " + personagem + " MORREU (X.X)\n");
-        atualizaMovimento();
-    }
-
-    @Override
-    protected void verificaAlteracaoEstado() {
-        if (this.getPersonagem().getSaude() > 0) {
-            this.getPersonagem().setEstado(new EstadoPerigo(this.getPersonagem()));
-        }
     }
 }

@@ -1,16 +1,18 @@
-package entities;
+package entities.auxiliars;
+
+import entities.Personagem;
 
 public class Posicao {
 
     private int x;
     private int y;
 
-    private int vel;
+    private Personagem p;
 
-    public Posicao(int x, int y, int vel) {
+    public Posicao(int x, int y, Personagem p) {
         this.x = x;
         this.y = y;
-        this.vel = vel;
+        this.p = p;
     }
 
     public int getX() {
@@ -21,32 +23,31 @@ public class Posicao {
         return y;
     }
 
-    public int getVel() {
-        return vel;
+    public Personagem getP() {
+        return p;
     }
 
-    public void setVel(int vel) {
-        this.vel = vel;
-//        toString();
+    public void setP(Personagem p) {
+        this.p = p;
     }
 
     public void movNorte() {
-        this.y -= vel;
+        this.y -= p.getVelocidade().vel();
 //        toString();
     }
 
     public void movSul() {
-        this.y += vel;
+        this.y += p.getVelocidade().vel();
 //        toString();
     }
 
     public void movLeste() {
-        this.x += vel;
+        this.x += p.getVelocidade().vel();
 //        toString();
     }
 
     public void movOeste() {
-        this.x -= vel;
+        this.x -= p.getVelocidade().vel();
 //        toString();
     }
 

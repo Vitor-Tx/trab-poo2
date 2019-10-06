@@ -1,12 +1,13 @@
 package entities;
 
+import entities.auxiliars.Posicao;
 import entities.estrategias.Ataque;
 import entities.estrategias.impl.AtaqueFraco;
 
 import java.util.Observable;
 import java.util.Observer;
 
-public class Inimigo implements Observer {
+public class Inimigo extends Personagem implements Observer {
 
     private Posicao posicao;
 
@@ -15,7 +16,7 @@ public class Inimigo implements Observer {
     private Integer saude;
 
     public Inimigo(int x, int y) {
-        this.posicao = new Posicao(x, y, 1);
+        this.posicao = new Posicao(x, y, this);
         this.ataque = new AtaqueFraco();
     }
 
