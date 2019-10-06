@@ -15,7 +15,7 @@ public class Jogo extends JPanel {
     private Movimento movimento;
 
     public static final int largura = 700;
-    public static final int altura = 700;
+    public static final int altura = 600;
 
     public static final String hurtUrl = System.getProperty("user.dir") + "/hurt.wav";
 
@@ -25,7 +25,7 @@ public class Jogo extends JPanel {
         setFocusable(true);
     }
 
-    public void iniciar (Jogo game) throws InterruptedException {
+    public void iniciar(Jogo game) throws InterruptedException {
         JFrame frame = new JFrame("O Jogo");
         frame.add(game);
         frame.setSize(largura, altura);
@@ -44,8 +44,10 @@ public class Jogo extends JPanel {
                 } else {
                     System.exit(0);
                 }
+            } else {
+                p1.mostraPos();
+                movimento.realizarMovimento();
             }
-            p1.mostraPos();
             game.repaint();
             Thread.sleep(50);
         }
@@ -76,10 +78,10 @@ public class Jogo extends JPanel {
     }
 
     private void inicializarPersonagens() {
-        p1 = new Personagem();
+        p1 = new Personagem(20, 20);
         movimento.setP(p1);
 
-        i1 = new Inimigo(300, 300);
+        i1 = new Inimigo(300, 300, 20, 20);
         p1.addObserver(i1);
     }
 }

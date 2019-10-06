@@ -8,7 +8,6 @@ import entities.Personagem;
 import entities.auxiliars.Posicao;
 
 public class EstadoNormal extends Estado {
-
     public EstadoNormal(Personagem personagem) {
         super(personagem);
         personagem.setEstragetias(new PuloMedio(), new VelocidadeMedia(), new AtaqueMedio());

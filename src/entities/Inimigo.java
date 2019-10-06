@@ -3,29 +3,28 @@ package entities;
 import entities.auxiliars.Posicao;
 import entities.estrategias.Ataque;
 import entities.estrategias.impl.AtaqueFraco;
+import entities.estrategias.impl.VelocidadeDevagar;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class Inimigo extends Personagem implements Observer {
 
-    private Posicao posicao;
-
-    private Ataque ataque;
-
-    private Integer saude;
-
     public Inimigo(int x, int y) {
-        this.posicao = new Posicao(x, y, this);
-        this.ataque = new AtaqueFraco();
+        setPosicao(new Posicao(x, y, this));
+        setAtaque(new AtaqueFraco());
+        setVelocidade(new VelocidadeDevagar());
     }
 
-    public Posicao getPosicao() {
-        return posicao;
+    public Inimigo(int x, int y, int l, int a) {
+        super(l, a);
+        setPosicao(new Posicao(x, y, this));
+        setAtaque(new AtaqueFraco());
+        setVelocidade(new VelocidadeDevagar());
     }
 
     public void atacar(Personagem p) {
-        p.receberDano(ataque.forca());
+        p.receberDano(getAtaque().forca());
     }
 
     @Override
@@ -33,15 +32,18 @@ public class Inimigo extends Personagem implements Observer {
         if (o instanceof Personagem) {
             Personagem p = (Personagem) o;
 
-            if ((posicao.getX() - p.getPosicao().getX() == 0) && (posicao.getY() - p.getPosicao().getY() == 0)) {
+            int dx = getPosicao().getX() - p.getPosicao().getX();
+            int dy = getPosicao().getY() - p.getPosicao().getY();
+
+            if ((dx > -getLargura() && dx < getLargura()) && (dy > -getAltura() && dy < getAltura())) {
                 System.out.println("\nInimigo " + this + " atacou personagem " + p);
                 atacar(p);
             } else {
-                if (p.getPosicao().getX() > posicao.getX()) posicao.movLeste();
-                else posicao.movOeste();
+                if (p.getPosicao().getX() > getPosicao().getX()) getPosicao().movLeste();
+                else getPosicao().movOeste();
 
-                if (p.getPosicao().getY() > posicao.getY()) posicao.movSul();
-                else posicao.movNorte();
+                if (p.getPosicao().getY() > getPosicao().getY()) getPosicao().movSul();
+                else getPosicao().movNorte();
             }
         }
     }

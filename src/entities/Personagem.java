@@ -21,7 +21,16 @@ public class Personagem extends Observable {
 
     private Posicao posicao;
 
+    private int largura;
+    private int altura;
+
     public Personagem() {
+        this.estado = new EstadoNormal(this);
+    }
+
+    public Personagem(int l, int a) {
+        this.largura = l;
+        this.altura = a;
         this.estado = new EstadoNormal(this);
     }
 
@@ -35,12 +44,24 @@ public class Personagem extends Observable {
         return pulo;
     }
 
+    public void setPulo(Pulo pulo) {
+        this.pulo = pulo;
+    }
+
     public Velocidade getVelocidade() {
         return velocidade;
     }
 
+    public void setVelocidade(Velocidade velocidade) {
+        this.velocidade = velocidade;
+    }
+
     public Ataque getAtaque() {
         return ataque;
+    }
+
+    public void setAtaque(Ataque ataque) {
+        this.ataque = ataque;
     }
 
     public Estado getEstado() {
@@ -79,5 +100,21 @@ public class Personagem extends Observable {
     public void mostraPos() {
         setChanged();
         notifyObservers();
+    }
+
+    public int getLargura() {
+        return largura;
+    }
+
+    public void setLargura(int largura) {
+        this.largura = largura;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
     }
 }

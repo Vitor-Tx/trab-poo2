@@ -29,10 +29,7 @@ public class Movimento implements KeyListener {
         this.p = p;
     }
 
-    @Override
-    public synchronized void keyPressed(KeyEvent e) {
-        teclas.add(e.getKeyCode());
-
+    public void realizarMovimento() {
         if (teclas.size() > 1) {
             if (teclas.contains(KeyEvent.VK_LEFT) && teclas.contains(KeyEvent.VK_UP) &&
                     !teclas.contains(KeyEvent.VK_RIGHT) && !teclas.contains(KeyEvent.VK_DOWN)) {
@@ -55,23 +52,28 @@ public class Movimento implements KeyListener {
                     p.getPosicao().movSudoeste();
                 }
             }
-        } else {
-            if (e.getKeyCode() == KeyEvent.VK_LEFT)
+        } else if (teclas.size() == 1) {
+            if (teclas.contains(KeyEvent.VK_LEFT))
                 if (isOnLimitBottomX())
                     p.getPosicao().movOeste();
 
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+            if (teclas.contains(KeyEvent.VK_RIGHT))
                 if (isOnLimitTopX())
                     p.getPosicao().movLeste();
 
-            if (e.getKeyCode() == KeyEvent.VK_UP)
+            if (teclas.contains(KeyEvent.VK_UP))
                 if (isOnLimitBottomY())
                     p.getPosicao().movNorte();
 
-            if (e.getKeyCode() == KeyEvent.VK_DOWN)
+            if (teclas.contains(KeyEvent.VK_DOWN))
                 if (isOnLimitTopY())
                     p.getPosicao().movSul();
         }
+    }
+
+    @Override
+    public synchronized void keyPressed(KeyEvent e) {
+        teclas.add(e.getKeyCode());
     }
 
     @Override
