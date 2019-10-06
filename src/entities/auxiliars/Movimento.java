@@ -9,16 +9,16 @@ import java.util.Set;
 
 public class Movimento implements KeyListener {
 
-    Personagem p;
+    private Personagem p;
 
-    int largura;
-    int altura;
+    private int larguraJanela;
+    private int alturaJanela;
 
     private final Set<Integer> teclas = new HashSet<>();
 
     public Movimento(int largura, int altura) {
-        this.largura = largura;
-        this.altura = altura;
+        this.larguraJanela = largura;
+        this.alturaJanela = altura;
     }
 
     public Personagem getP() {
@@ -87,7 +87,7 @@ public class Movimento implements KeyListener {
     }
 
     private boolean isOnLimitTopX() {
-        return p.getPosicao().getX() < (largura - 20);
+        return p.getPosicao().getX() < (larguraJanela - 20);
     }
 
     private boolean isOnLimitBottomX() {
@@ -95,7 +95,7 @@ public class Movimento implements KeyListener {
     }
 
     private boolean isOnLimitTopY() {
-        return p.getPosicao().getY() < (altura - 40);
+        return p.getPosicao().getY() < (alturaJanela - 40);
     }
 
     private boolean isOnLimitBottomY() {

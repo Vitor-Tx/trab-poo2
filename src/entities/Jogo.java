@@ -14,13 +14,16 @@ public class Jogo extends JPanel {
 
     private Movimento movimento;
 
-    public static final int largura = 700;
-    public static final int altura = 600;
+    public static final int larguraJanela = 700;
+    public static final int alturaJanela = 600;
+
+    public static final int larguraPersonagem = 20;
+    public static final int alturaPersonagem = 40;
 
     public static final String hurtUrl = System.getProperty("user.dir") + "/hurt.wav";
 
     public Jogo() {
-        movimento = new Movimento(largura, altura);
+        movimento = new Movimento(larguraJanela, alturaJanela);
         addKeyListener(movimento);
         setFocusable(true);
     }
@@ -28,7 +31,7 @@ public class Jogo extends JPanel {
     public void iniciar(Jogo game) throws InterruptedException {
         JFrame frame = new JFrame("O Jogo");
         frame.add(game);
-        frame.setSize(largura, altura);
+        frame.setSize(larguraJanela, alturaJanela);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,12 +66,12 @@ public class Jogo extends JPanel {
 
         if (p1 != null) {
             g2d.setColor(Color.BLACK);
-            g2d.fillOval(p1.getPosicao().getX(), p1.getPosicao().getY(), 20, 20);
+            g2d.fillRect(p1.getPosicao().getX(), p1.getPosicao().getY(), larguraPersonagem, alturaPersonagem);
         }
 
         if (i1 != null) {
             g2d.setColor(Color.RED);
-            g2d.fillOval(i1.getPosicao().getX(), i1.getPosicao().getY(), 20, 20);
+            g2d.fillRect(i1.getPosicao().getX(), i1.getPosicao().getY(), larguraPersonagem, alturaPersonagem);
         }
     }
 
@@ -78,10 +81,10 @@ public class Jogo extends JPanel {
     }
 
     private void inicializarPersonagens() {
-        p1 = new Personagem(20, 20);
+        p1 = new Personagem(larguraPersonagem, alturaPersonagem);
         movimento.setP(p1);
 
-        i1 = new Inimigo(300, 300, 20, 20);
+        i1 = new Inimigo(300, 300, larguraPersonagem, alturaPersonagem);
         p1.addObserver(i1);
     }
 }

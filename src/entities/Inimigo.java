@@ -1,7 +1,7 @@
 package entities;
 
 import entities.auxiliars.Posicao;
-import entities.estrategias.Ataque;
+import entities.auxiliars.SetTimeout;
 import entities.estrategias.impl.AtaqueFraco;
 import entities.estrategias.impl.VelocidadeDevagar;
 
@@ -9,6 +9,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Inimigo extends Personagem implements Observer {
+
+    private boolean podeAtacar = true;
+    private int delayAtaque = 1000;
 
     public Inimigo(int x, int y) {
         setPosicao(new Posicao(x, y, this));
@@ -23,8 +26,13 @@ public class Inimigo extends Personagem implements Observer {
         setVelocidade(new VelocidadeDevagar());
     }
 
-    public void atacar(Personagem p) {
-        p.receberDano(getAtaque().forca());
+    public void atacar(Personagem p) throws InterruptedException {
+        if (podeAtacar) {
+            System.out.println("\nInimigo " + this + " atacou personagem " + p);
+            p.receberDano(getAtaque().forca());
+            podeAtacar = false;
+            SetTimeout.setTimeout(() -> podeAtacar = true, delayAtaque);
+        }
     }
 
     @Override
@@ -36,8 +44,11 @@ public class Inimigo extends Personagem implements Observer {
             int dy = getPosicao().getY() - p.getPosicao().getY();
 
             if ((dx > -getLargura() && dx < getLargura()) && (dy > -getAltura() && dy < getAltura())) {
-                System.out.println("\nInimigo " + this + " atacou personagem " + p);
-                atacar(p);
+                try {
+                    atacar(p);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             } else {
                 if (p.getPosicao().getX() > getPosicao().getX()) getPosicao().movLeste();
                 else getPosicao().movOeste();
