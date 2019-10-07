@@ -1,9 +1,12 @@
-package entities;
+package entities.personagem.impl;
 
 import entities.auxiliars.Posicao;
 import entities.auxiliars.SetTimeout;
+import entities.estrategias.impl.AtaqueForte;
 import entities.estrategias.impl.AtaqueFraco;
+import entities.estrategias.impl.PuloBaixo;
 import entities.estrategias.impl.VelocidadeDevagar;
+import entities.personagem.Personagem;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -14,16 +17,17 @@ public class Inimigo extends Personagem implements Observer {
     private int delayAtaque = 1000;
 
     public Inimigo(int x, int y) {
+        super(new PuloBaixo(), new VelocidadeDevagar(), new AtaqueForte());
         setPosicao(new Posicao(x, y, this));
-        setAtaque(new AtaqueFraco());
-        setVelocidade(new VelocidadeDevagar());
+        setAtaque(getDefaultAtaque());
+        setVelocidade(getDefaultVelocidade());
     }
 
     public Inimigo(int x, int y, int l, int a) {
-        super(l, a);
+        super(l, a, new PuloBaixo(), new VelocidadeDevagar(), new AtaqueForte());
         setPosicao(new Posicao(x, y, this));
-        setAtaque(new AtaqueFraco());
-        setVelocidade(new VelocidadeDevagar());
+        setAtaque(getDefaultAtaque());
+        setVelocidade(getDefaultVelocidade());
     }
 
     public void atacar(Personagem p) throws InterruptedException {

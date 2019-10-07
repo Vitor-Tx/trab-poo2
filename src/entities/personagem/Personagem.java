@@ -1,8 +1,10 @@
-package entities;
+package entities.personagem;
 
+import entities.Jogo;
 import entities.auxiliars.AudioPlayer;
 import entities.auxiliars.Posicao;
 import entities.estado.Estado;
+import entities.estado.impl.EstadoForte;
 import entities.estado.impl.EstadoNormal;
 import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
@@ -10,11 +12,11 @@ import entities.estrategias.Velocidade;
 
 import java.util.Observable;
 
-public class Personagem extends Observable {
+public abstract class Personagem extends Observable {
 
-    private Pulo pulo;
-    private Velocidade velocidade;
-    private Ataque ataque;
+    private Pulo pulo, defaultPulo;
+    private Velocidade velocidade, defaultVelocidade;
+    private Ataque ataque, defaultAtaque;
 
     private Estado estado;
     private Integer saude;
@@ -24,14 +26,20 @@ public class Personagem extends Observable {
     private int largura;
     private int altura;
 
-    public Personagem() {
-        this.estado = new EstadoNormal(this);
+    public Personagem(Pulo pulo, Velocidade velocidade, Ataque ataque) {
+        this.largura = 20;
+        this.altura = 40;
+        this.defaultPulo = pulo;
+        this.defaultVelocidade = velocidade;
+        this.defaultAtaque = ataque;
     }
 
-    public Personagem(int l, int a) {
+    public Personagem(int l, int a, Pulo pulo, Velocidade velocidade, Ataque ataque) {
         this.largura = l;
         this.altura = a;
-        this.estado = new EstadoNormal(this);
+        this.defaultPulo = pulo;
+        this.defaultVelocidade = velocidade;
+        this.defaultAtaque = ataque;
     }
 
     public void setEstragetias(Pulo pulo, Velocidade velocidade, Ataque ataque) {
@@ -116,5 +124,17 @@ public class Personagem extends Observable {
 
     public void setAltura(int altura) {
         this.altura = altura;
+    }
+
+    public Pulo getDefaultPulo() {
+        return defaultPulo;
+    }
+
+    public Velocidade getDefaultVelocidade() {
+        return defaultVelocidade;
+    }
+
+    public Ataque getDefaultAtaque() {
+        return defaultAtaque;
     }
 }

@@ -1,7 +1,7 @@
 package entities.estado.impl;
 
 import entities.estado.Estado;
-import entities.Personagem;
+import entities.personagem.Personagem;
 
 public class EstadoMorto extends Estado {
 

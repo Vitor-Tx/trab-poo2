@@ -2,6 +2,10 @@ package entities;
 
 import entities.auxiliars.Movimento;
 import entities.estado.impl.EstadoMorto;
+import entities.personagem.Personagem;
+import entities.personagem.impl.Inimigo;
+import entities.personagem.impl.Personagem01;
+import entities.personagem.impl.Personagem02;
 
 import javax.swing.*;
 import java.awt.*;
@@ -81,7 +85,7 @@ public class Jogo extends JPanel {
     }
 
     private void inicializarPersonagens() {
-        p1 = new Personagem(larguraPersonagem, alturaPersonagem);
+        p1 = new Personagem02(larguraPersonagem, alturaPersonagem);
         movimento.setP(p1);
 
         i1 = new Inimigo(300, 300, larguraPersonagem, alturaPersonagem);
