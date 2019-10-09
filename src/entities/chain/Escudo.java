@@ -39,7 +39,11 @@ public abstract class Escudo {
 
     public int defender(int dano){
         if(dano == 0) return dano;
-        if(this.carga == 0) return getSucessor().defender(dano);
+        if(this.carga == 0){
+            if(getSucessor() != null)
+                return getSucessor().defender(dano);
+            else return dano;
+        }
         if(dano > this.defesa){ // se o dano for maior que a defesa do escudo
             if(this.carga < this.defesa){ // se a carga atual do escudo for menor que a defesa
                 dano -= this.carga; // reduz o dano pela carga atual, e neutraliza o dano

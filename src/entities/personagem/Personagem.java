@@ -36,9 +36,9 @@ public abstract class Personagem extends Observable {
         this.defaultPulo = pulo;
         this.defaultVelocidade = velocidade;
         this.defaultAtaque = ataque;
-        this.escudo = new EscudoForte(0);
-        this.escudo.setSucessor(new EscudoMedio(0));
-        this.escudo.getSucessor().setSucessor(new EscudoFraco(0));
+        this.escudo = new EscudoForte(15);
+        this.escudo.setSucessor(new EscudoMedio(10));
+        this.escudo.getSucessor().setSucessor(new EscudoFraco(5));
     }
 
     public Personagem(int l, int a, Pulo pulo, Velocidade velocidade, Ataque ataque) {
@@ -47,9 +47,9 @@ public abstract class Personagem extends Observable {
         this.defaultPulo = pulo;
         this.defaultVelocidade = velocidade;
         this.defaultAtaque = ataque;
-        this.escudo = new EscudoForte(0);
-        this.escudo.setSucessor(new EscudoMedio(0));
-        this.escudo.getSucessor().setSucessor(new EscudoFraco(0));
+        this.escudo = new EscudoForte(15);
+        this.escudo.setSucessor(new EscudoMedio(10));
+        this.escudo.getSucessor().setSucessor(new EscudoFraco(5));
     }
 
     public void setEstragetias(Pulo pulo, Velocidade velocidade, Ataque ataque) {
@@ -100,7 +100,7 @@ public abstract class Personagem extends Observable {
 
     public void receberDano(Integer dano) {
         AudioPlayer.playSound(Jogo.hurtUrl);
-        estado.receberDano(dano);
+        estado.receberDano(escudo.defender(dano));
     }
 
     public void receberVida(Integer vida) {
