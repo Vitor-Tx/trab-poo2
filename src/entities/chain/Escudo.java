@@ -15,12 +15,24 @@ public abstract class Escudo {
     protected int defesa;
     protected int carga;
 
+    public Escudo(int carga){
+        this.carga = carga;
+    }
+
     public void setSucessor(Escudo sucessor) {
         this.sucessor = sucessor;
     }
 
     public Escudo getSucessor() {
         return this.sucessor;
+    }
+
+    public void setCarga(int carga) {
+        this.carga = carga;
+    }
+
+    public int getCarga() {
+        return carga;
     }
 
     public abstract void adcCarga(Escudo escudo);

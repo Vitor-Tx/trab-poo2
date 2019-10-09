@@ -3,9 +3,11 @@ package entities.personagem;
 import entities.Jogo;
 import entities.auxiliars.AudioPlayer;
 import entities.auxiliars.Posicao;
+import entities.chain.Escudo;
+import entities.chain.impl.EscudoForte;
+import entities.chain.impl.EscudoFraco;
+import entities.chain.impl.EscudoMedio;
 import entities.estado.Estado;
-import entities.estado.impl.EstadoForte;
-import entities.estado.impl.EstadoNormal;
 import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
@@ -17,6 +19,8 @@ public abstract class Personagem extends Observable {
     private Pulo pulo, defaultPulo;
     private Velocidade velocidade, defaultVelocidade;
     private Ataque ataque, defaultAtaque;
+    private Escudo escudo;
+
 
     private Estado estado;
     private Integer saude;
@@ -32,6 +36,9 @@ public abstract class Personagem extends Observable {
         this.defaultPulo = pulo;
         this.defaultVelocidade = velocidade;
         this.defaultAtaque = ataque;
+        this.escudo = new EscudoForte(0);
+        this.escudo.setSucessor(new EscudoMedio(0));
+        this.escudo.getSucessor().setSucessor(new EscudoFraco(0));
     }
 
     public Personagem(int l, int a, Pulo pulo, Velocidade velocidade, Ataque ataque) {
@@ -40,6 +47,9 @@ public abstract class Personagem extends Observable {
         this.defaultPulo = pulo;
         this.defaultVelocidade = velocidade;
         this.defaultAtaque = ataque;
+        this.escudo = new EscudoForte(0);
+        this.escudo.setSucessor(new EscudoMedio(0));
+        this.escudo.getSucessor().setSucessor(new EscudoFraco(0));
     }
 
     public void setEstragetias(Pulo pulo, Velocidade velocidade, Ataque ataque) {
