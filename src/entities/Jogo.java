@@ -1,11 +1,10 @@
 package entities;
 
-import entities.auxiliars.Movimento;
+import entities.auxiliars.Acao;
 import entities.estado.impl.EstadoMorto;
 import entities.personagem.Personagem;
 import entities.personagem.impl.Inimigo;
 import entities.personagem.impl.Personagem01;
-import entities.personagem.impl.Personagem02;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +15,7 @@ public class Jogo extends JPanel {
 
     private Inimigo i1;
 
-    private Movimento movimento;
+    private Acao acao;
 
     public static final int larguraJanela = 700;
     public static final int alturaJanela = 600;
@@ -25,10 +24,11 @@ public class Jogo extends JPanel {
     public static final int alturaPersonagem = 40;
 
     public static final String hurtUrl = System.getProperty("user.dir") + "/hurt.wav";
+    public static final String inimigoHurtUrl = System.getProperty("user.dir") + "/inimigo-hurt.wav";
 
     public Jogo() {
-        movimento = new Movimento(larguraJanela, alturaJanela);
-        addKeyListener(movimento);
+        acao = new Acao(larguraJanela, alturaJanela);
+        addKeyListener(acao);
         setFocusable(true);
     }
 
@@ -43,6 +43,10 @@ public class Jogo extends JPanel {
         inicializarPersonagens();
 
         while (true) {
+            if (i1.getEstado() instanceof EstadoMorto) {
+                 p1.deleteObserver(i1);
+            }
+
             if (p1.getEstado() instanceof EstadoMorto) {
                 int resposta = JOptionPane.showConfirmDialog(this, "Deseja reiniciar o jogo?", "Confirma\u00e7\u00e3o",
                         JOptionPane.YES_NO_OPTION);
@@ -53,7 +57,7 @@ public class Jogo extends JPanel {
                 }
             } else {
                 p1.mostraPos();
-                movimento.realizarMovimento();
+                acao.realizarMovimento();
             }
             game.repaint();
             Thread.sleep(50);
@@ -86,7 +90,7 @@ public class Jogo extends JPanel {
 
     private void inicializarPersonagens() {
         p1 = new Personagem01(larguraPersonagem, alturaPersonagem);
-        movimento.setP(p1);
+        acao.setP(p1);
 
         i1 = new Inimigo(300, 300, larguraPersonagem, alturaPersonagem);
         p1.addObserver(i1);

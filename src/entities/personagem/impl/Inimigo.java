@@ -1,7 +1,10 @@
 package entities.personagem.impl;
 
+import entities.Jogo;
+import entities.auxiliars.AudioPlayer;
 import entities.auxiliars.Posicao;
 import entities.auxiliars.SetTimeout;
+import entities.estado.impl.EstadoMorto;
 import entities.estrategias.impl.AtaqueForte;
 import entities.estrategias.impl.AtaqueFraco;
 import entities.estrategias.impl.PuloBaixo;
@@ -27,12 +30,18 @@ public class Inimigo extends Personagem implements Observer {
     }
 
     public void atacar(Personagem p) throws InterruptedException {
-        if (podeAtacar) {
+        if (podeAtacar && !(getEstado() instanceof EstadoMorto)) {
             System.out.println("\nInimigo " + this + " atacou personagem " + p);
             p.receberDano(getAtaque().forca());
             podeAtacar = false;
             SetTimeout.setTimeout(() -> podeAtacar = true, delayAtaque);
         }
+    }
+
+    @Override
+    public void receberDano(Integer dano) {
+        AudioPlayer.playSound(Jogo.inimigoHurtUrl);
+        getEstado().receberDano(dano);
     }
 
     @Override

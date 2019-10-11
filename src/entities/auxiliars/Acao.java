@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Movimento implements KeyListener {
+public class Acao implements KeyListener {
 
     private Personagem p;
 
@@ -16,7 +16,7 @@ public class Movimento implements KeyListener {
 
     private final Set<Integer> teclas = new HashSet<>();
 
-    public Movimento(int largura, int altura) {
+    public Acao(int largura, int altura) {
         this.larguraJanela = largura;
         this.alturaJanela = altura;
     }
@@ -68,6 +68,9 @@ public class Movimento implements KeyListener {
             if (teclas.contains(KeyEvent.VK_DOWN))
                 if (isOnLimitTopY())
                     p.getPosicao().movSul();
+
+            if (teclas.contains(KeyEvent.VK_SPACE))
+                p.atacar();
         }
     }
 
