@@ -8,12 +8,17 @@ import entities.chain.impl.EscudoForte;
 import entities.chain.impl.EscudoFraco;
 import entities.chain.impl.EscudoMedio;
 import entities.estado.Estado;
+import entities.estado.impl.EstadoMorto;
 import entities.estado.impl.EstadoNormal;
 import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
+import entities.personagem.impl.Inimigo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 
 public abstract class Personagem extends Observable {
 
@@ -29,6 +34,8 @@ public abstract class Personagem extends Observable {
 
     private int largura;
     private int altura;
+
+    private List<Inimigo> inimigos = new ArrayList<>();
 
     public Personagem(Pulo pulo, Velocidade velocidade, Ataque ataque) {
         this.largura = 20;
@@ -60,12 +67,69 @@ public abstract class Personagem extends Observable {
         this.ataque = ataque;
     }
 
+    public void receberDano(Integer dano) {
+        AudioPlayer.playSound(Jogo.hurtUrl);
+        estado.receberDano(escudo.defender(dano));
+    }
+
+    public void receberVida(Integer vida) {
+        estado.receberVida(vida);
+    }
+
+    public void mostraPos() {
+        setChanged();
+        notifyObservers();
+    }
+
+    public void atacar() {
+        if (inimigos.size() == 0) return;
+
+        for (Inimigo i : inimigos) {
+
+            // Faz aqui a verificação se o inimigo esta na area de receber ataque, tenta conseguir implementar sem ajuda
+            // Por estar "true" ele vai sempre conseguir atacar o inimigo, independente da posição
+            if (true) {
+                i.receberDano(ataque.forca());
+            }
+        }
+    }
+
+    public void addObserver(Observer o) {
+        super.addObserver(o);
+
+        Inimigo i = (Inimigo) o;
+        this.inimigos.add(i);
+    }
+
+    public void deleteObserver(Observer o) {
+        super.deleteObserver(o);
+
+        Inimigo i = (Inimigo) o;
+        this.inimigos.remove(i);
+    }
+
+    public void deleteObservers() {
+        super.deleteObservers();
+
+        this.inimigos.clear();
+    }
+
+    // GETTERS SETTERS...
+
     public Pulo getPulo() {
         return pulo;
     }
 
     public void setPulo(Pulo pulo) {
         this.pulo = pulo;
+    }
+
+    public Pulo getDefaultPulo() {
+        return defaultPulo;
+    }
+
+    public void setDefaultPulo(Pulo defaultPulo) {
+        this.defaultPulo = defaultPulo;
     }
 
     public Velocidade getVelocidade() {
@@ -76,12 +140,36 @@ public abstract class Personagem extends Observable {
         this.velocidade = velocidade;
     }
 
+    public Velocidade getDefaultVelocidade() {
+        return defaultVelocidade;
+    }
+
+    public void setDefaultVelocidade(Velocidade defaultVelocidade) {
+        this.defaultVelocidade = defaultVelocidade;
+    }
+
     public Ataque getAtaque() {
         return ataque;
     }
 
     public void setAtaque(Ataque ataque) {
         this.ataque = ataque;
+    }
+
+    public Ataque getDefaultAtaque() {
+        return defaultAtaque;
+    }
+
+    public void setDefaultAtaque(Ataque defaultAtaque) {
+        this.defaultAtaque = defaultAtaque;
+    }
+
+    public Escudo getEscudo() {
+        return escudo;
+    }
+
+    public void setEscudo(Escudo escudo) {
+        this.escudo = escudo;
     }
 
     public Estado getEstado() {
@@ -100,26 +188,12 @@ public abstract class Personagem extends Observable {
         this.saude = saude;
     }
 
-    public void receberDano(Integer dano) {
-        AudioPlayer.playSound(Jogo.hurtUrl);
-        estado.receberDano(escudo.defender(dano));
-    }
-
-    public void receberVida(Integer vida) {
-        estado.receberVida(vida);
-    }
-
     public Posicao getPosicao() {
         return posicao;
     }
 
     public void setPosicao(Posicao posicao) {
         this.posicao = posicao;
-    }
-
-    public void mostraPos() {
-        setChanged();
-        notifyObservers();
     }
 
     public int getLargura() {
@@ -138,15 +212,11 @@ public abstract class Personagem extends Observable {
         this.altura = altura;
     }
 
-    public Pulo getDefaultPulo() {
-        return defaultPulo;
+    public List<Inimigo> getInimigos() {
+        return inimigos;
     }
 
-    public Velocidade getDefaultVelocidade() {
-        return defaultVelocidade;
-    }
-
-    public Ataque getDefaultAtaque() {
-        return defaultAtaque;
+    public void setInimigos(List<Inimigo> inimigos) {
+        this.inimigos = inimigos;
     }
 }

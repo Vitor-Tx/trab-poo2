@@ -32,21 +32,29 @@ public class Posicao {
     }
 
     public void movNorte() {
+        if (p.getVelocidade() == null) return;
+
         this.y -= p.getVelocidade().vel();
 //        toString();
     }
 
     public void movSul() {
+        if (p.getVelocidade() == null) return;
+
         this.y += p.getVelocidade().vel();
 //        toString();
     }
 
     public void movLeste() {
+        if (p.getVelocidade() == null) return;
+
         this.x += p.getVelocidade().vel();
 //        toString();
     }
 
     public void movOeste() {
+        if (p.getVelocidade() == null) return;
+
         this.x -= p.getVelocidade().vel();
 //        toString();
     }
