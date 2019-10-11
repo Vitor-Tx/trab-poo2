@@ -8,6 +8,7 @@ import entities.chain.impl.EscudoForte;
 import entities.chain.impl.EscudoFraco;
 import entities.chain.impl.EscudoMedio;
 import entities.estado.Estado;
+import entities.estado.impl.EstadoNormal;
 import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
@@ -20,7 +21,6 @@ public abstract class Personagem extends Observable {
     private Velocidade velocidade, defaultVelocidade;
     private Ataque ataque, defaultAtaque;
     private Escudo escudo;
-
 
     private Estado estado;
     private Integer saude;
@@ -36,6 +36,7 @@ public abstract class Personagem extends Observable {
         this.defaultPulo = pulo;
         this.defaultVelocidade = velocidade;
         this.defaultAtaque = ataque;
+        this.estado = new EstadoNormal(this, getDefaultPulo(), getDefaultVelocidade(), getDefaultAtaque());
         this.escudo = new EscudoForte(15);
         this.escudo.setSucessor(new EscudoMedio(10));
         this.escudo.getSucessor().setSucessor(new EscudoFraco(5));
@@ -47,6 +48,7 @@ public abstract class Personagem extends Observable {
         this.defaultPulo = pulo;
         this.defaultVelocidade = velocidade;
         this.defaultAtaque = ataque;
+        this.estado = new EstadoNormal(this, getDefaultPulo(), getDefaultVelocidade(), getDefaultAtaque());
         this.escudo = new EscudoForte(15);
         this.escudo.setSucessor(new EscudoMedio(10));
         this.escudo.getSucessor().setSucessor(new EscudoFraco(5));

@@ -15,7 +15,7 @@ public abstract class Escudo {
     protected int defesa;
     protected int carga;
 
-    public Escudo(int carga){
+    public Escudo(int carga) {
         this.carga = carga;
     }
 
@@ -37,34 +37,32 @@ public abstract class Escudo {
 
     public abstract void adcCarga(Escudo escudo);
 
-    public int defender(int dano){
-        if(dano == 0) return dano;
-        if(this.carga == 0){
-            if(getSucessor() != null)
+    public int defender(int dano) {
+        if (dano == 0) return dano;
+        if (this.carga == 0) {
+            if (getSucessor() != null)
                 return getSucessor().defender(dano);
             else return dano;
         }
-        if(dano > this.defesa){ // se o dano for maior que a defesa do escudo
-            if(this.carga < this.defesa){ // se a carga atual do escudo for menor que a defesa
+        if (dano > this.defesa) { // se o dano for maior que a defesa do escudo
+            if (this.carga < this.defesa) { // se a carga atual do escudo for menor que a defesa
                 dano -= this.carga; // reduz o dano pela carga atual, e neutraliza o dano
                 this.carga = 0;
-            }
-            else { // se a carga atual do escudo for maior ou igual à defesa
+            } else { // se a carga atual do escudo for maior ou igual à defesa
                 dano -= this.defesa; // reduz o dano pela defesa
                 this.carga -= this.defesa;
             }
-        }
-        else{ // se o dano for menor ou igual à defesa do escudo
-            if(this.carga > dano){ // se a carga atual  do escudo for maior que o dano
+        } else { // se o dano for menor ou igual à defesa do escudo
+            if (this.carga > dano) { // se a carga atual  do escudo for maior que o dano
                 this.carga -= dano; // reduz a carga pelo valor do dano, e neutraliza o dano
                 dano = 0;
-            }
-            else{ // se a carga atual  do escudo for menor ou igual ao dano
+            } else { // se a carga atual  do escudo for menor ou igual ao dano
                 dano -= this.carga; // reduz o dano pela carga atual e a carga acaba
                 this.carga = 0;
             }
         }
-        if(dano != 0 && getSucessor() != null) return getSucessor().defender(dano); // passa para o próximo escudo, se houver
+        if (dano != 0 && getSucessor() != null)
+            return getSucessor().defender(dano); // passa para o próximo escudo, se houver
         else return dano;
     }
 

@@ -19,15 +19,11 @@ public class Inimigo extends Personagem implements Observer {
     public Inimigo(int x, int y) {
         super(new PuloBaixo(), new VelocidadeDevagar(), new AtaqueForte());
         setPosicao(new Posicao(x, y, this));
-        setAtaque(getDefaultAtaque());
-        setVelocidade(getDefaultVelocidade());
     }
 
     public Inimigo(int x, int y, int l, int a) {
         super(l, a, new PuloBaixo(), new VelocidadeDevagar(), new AtaqueForte());
         setPosicao(new Posicao(x, y, this));
-        setAtaque(getDefaultAtaque());
-        setVelocidade(getDefaultVelocidade());
     }
 
     public void atacar(Personagem p) throws InterruptedException {

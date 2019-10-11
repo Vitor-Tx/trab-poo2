@@ -85,7 +85,7 @@ public class Jogo extends JPanel {
     }
 
     private void inicializarPersonagens() {
-        p1 = new Personagem02(larguraPersonagem, alturaPersonagem);
+        p1 = new Personagem01(larguraPersonagem, alturaPersonagem);
         movimento.setP(p1);
 
         i1 = new Inimigo(300, 300, larguraPersonagem, alturaPersonagem);
