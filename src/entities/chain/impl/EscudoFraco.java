@@ -9,5 +9,6 @@ public class EscudoFraco extends Escudo {
 
     public  void adcCarga(Escudo escudo){
         if(escudo instanceof EscudoFraco) this.carga += escudo.getCarga();
+        else if(getSucessor() != null) getSucessor().adcCarga(escudo);
     }
 }
