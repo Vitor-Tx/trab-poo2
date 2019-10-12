@@ -1,5 +1,6 @@
 package entities.auxiliars;
 
+import entities.decorators.Item;
 import entities.personagem.Personagem;
 
 public class Posicao {
@@ -8,11 +9,18 @@ public class Posicao {
     private int y;
 
     private Personagem p;
+    private Item z;
 
     public Posicao(int x, int y, Personagem p) {
         this.x = x;
         this.y = y;
         this.p = p;
+    }
+
+    public Posicao(int x, int y, Item z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     public int getX() {

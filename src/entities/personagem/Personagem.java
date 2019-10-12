@@ -70,13 +70,6 @@ public abstract class Personagem extends Observable {
         this.ataque = ataque;
     }
 
-    /*
-    public void adicionaPoder (int x) {
-        switch (x) {
-        }
-    }
-    */
-
     public void receberDano(Integer dano) {
         AudioPlayer.playSound(Jogo.hurtUrl);
         estado.receberDano(escudo.defender(dano));

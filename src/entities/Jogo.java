@@ -1,5 +1,6 @@
 package entities;
 
+import entities.decorators.Item;
 import entities.auxiliars.Acao;
 import entities.estado.impl.EstadoMorto;
 import entities.personagem.Personagem;
@@ -15,6 +16,8 @@ public class Jogo extends JPanel {
 
     private Inimigo i1;
 
+    private Item r1;
+
     private Acao acao;
 
     public static final int larguraJanela = 700;
@@ -25,6 +28,7 @@ public class Jogo extends JPanel {
 
     public static final String hurtUrl = System.getProperty("user.dir") + "/hurt.wav";
     public static final String inimigoHurtUrl = System.getProperty("user.dir") + "/inimigo-hurt.wav";
+    public static final String itemCatchUrl = System.getProperty("user.dir") + "/item-catch.wav";
 
     public Jogo() {
         acao = new Acao(larguraJanela, alturaJanela);
@@ -81,18 +85,32 @@ public class Jogo extends JPanel {
             g2d.setColor(Color.RED);
             g2d.fillRect(i1.getPosicao().getX(), i1.getPosicao().getY(), larguraPersonagem, alturaPersonagem);
         }
+
+        if (r1 != null) {
+            if (r1.getId() == 0) {
+                g2d.setColor(Color.BLUE);
+                g2d.fillRect(r1.getPosicao().getX(), r1.getPosicao().getY(), r1.getLargura(), r1.getAltura());
+            } else if (r1.getId() == 1) {
+                g2d.setColor(Color.MAGENTA);
+                g2d.fillRect(r1.getPosicao().getX(), r1.getPosicao().getY(), r1.getLargura(), r1.getAltura());
+            } else {
+                g2d.setColor(Color.ORANGE);
+                g2d.fillRect(r1.getPosicao().getX(), r1.getPosicao().getY(), r1.getLargura(), r1.getAltura());
+            }
     }
 
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
+        public static void clearScreen() {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        }
 
-    private void inicializarPersonagens() {
-        p1 = new Personagem01(larguraPersonagem, alturaPersonagem);
-        acao.setP(p1);
+        private void inicializarPersonagens() {
+            p1 = new Personagem01(larguraPersonagem, alturaPersonagem);
+            acao.setP(p1);
 
-        i1 = new Inimigo(300, 300, larguraPersonagem, alturaPersonagem);
-        p1.addObserver(i1);
-    }
+            i1 = new Inimigo(300, 300, larguraPersonagem, alturaPersonagem);
+            p1.addObserver(i1);
+
+            r1 = new Item();
+        }
 }
