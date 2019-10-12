@@ -14,6 +14,9 @@ import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
 import entities.personagem.impl.Inimigo;
+import entities.decorators.impl.Gelo;
+import entities.decorators.impl.Fogo;
+import entities.decorators.impl.Veneno;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +69,13 @@ public abstract class Personagem extends Observable {
         this.velocidade = velocidade;
         this.ataque = ataque;
     }
+
+    /*
+    public void adicionaPoder (int x) {
+        switch (x) {
+        }
+    }
+    */
 
     public void receberDano(Integer dano) {
         AudioPlayer.playSound(Jogo.hurtUrl);

@@ -10,6 +10,9 @@ import entities.estrategias.impl.AtaqueFraco;
 import entities.estrategias.impl.PuloBaixo;
 import entities.estrategias.impl.VelocidadeDevagar;
 import entities.personagem.Personagem;
+import entities.decorators.impl.Gelo;
+import entities.decorators.impl.Veneno;
+import entities.decorators.impl.Fogo;
 
 import java.util.Observable;
 import java.util.Observer;

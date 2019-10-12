@@ -1,6 +1,6 @@
 package entities.estrategias;
 
-public interface Ataque {
+public abstract class Ataque {
 
-    int forca();
+    public abstract int forca();
 }
