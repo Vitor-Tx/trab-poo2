@@ -28,7 +28,7 @@ public class Item {
     public Item() {  //Construtor utilizado para a criação de um item aleatório.
         this.largura = 10;
         this.altura = 10;
-        this.id = random.nextInt(MAX - 1); //geração de ID aleatória
+        this.id = random.nextInt(MAX); //geração de ID aleatória
         setPosicao(new Posicao(random.nextInt(Jogo.larguraJanela), random.nextInt(Jogo.alturaJanela), this));
     }
 
@@ -54,7 +54,7 @@ public class Item {
             case 1:
                 j.setAtaque(new Veneno(j.getAtaque()));
                 break;
-            default:
+            case 2:
                 j.setAtaque(new Fogo(j.getAtaque()));
         }
 

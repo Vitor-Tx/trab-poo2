@@ -100,7 +100,7 @@ public class Jogo extends JPanel {
         for (Item i : itens) {
             if (i != null && !i.isPego()) {
                 if (i.getId() == 0) {
-                    g2d.setColor(Color.BLUE);
+                    g2d.setColor(Color.CYAN);
                     g2d.fillRect(i.getPosicao().getX(), i.getPosicao().getY(), i.getLargura(), i.getAltura());
                 } else if (i.getId() == 1) {
                     g2d.setColor(Color.MAGENTA);
@@ -163,7 +163,7 @@ public class Jogo extends JPanel {
         g2d.setColor(Color.GREEN);
         g2d.fillRect(0, alturaJanela - 30, jogador.getSaude() * 5, 40);
 
-        g2d.setColor(Color.CYAN);
+        g2d.setColor(Color.BLUE);
         g2d.fillRect(larguraJanela - (jogador.getEscudo().getCargaTotal() * 5), alturaJanela - 30, jogador.getEscudo().getCargaTotal() * 5, 40);
     }
 
