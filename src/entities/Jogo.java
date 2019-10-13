@@ -97,6 +97,7 @@ public class Jogo extends JPanel {
                 g2d.setColor(Color.ORANGE);
                 g2d.fillRect(r1.getPosicao().getX(), r1.getPosicao().getY(), r1.getLargura(), r1.getAltura());
             }
+        }
     }
 
         public static void clearScreen() {
