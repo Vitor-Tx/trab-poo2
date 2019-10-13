@@ -1,27 +1,13 @@
-package entities.personagem;
+package entities.observer;
 
-import entities.Jogo;
-import entities.auxiliars.AudioPlayer;
 import entities.auxiliars.Posicao;
-import entities.chain.Escudo;
-import entities.chain.impl.EscudoForte;
-import entities.chain.impl.EscudoFraco;
-import entities.chain.impl.EscudoMedio;
 import entities.estado.Estado;
-import entities.estado.impl.EstadoMorto;
 import entities.estado.impl.EstadoNormal;
 import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
-import entities.personagem.impl.Inimigo;
-import entities.decorators.impl.Gelo;
-import entities.decorators.impl.Fogo;
-import entities.decorators.impl.Veneno;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Observable;
-import java.util.Observer;
 
 public abstract class Personagem extends Observable {
 
@@ -37,7 +23,7 @@ public abstract class Personagem extends Observable {
     private int largura;
     private int altura;
 
-    private List<Inimigo> inimigos = new ArrayList<>();
+
 
     public Personagem(Pulo pulo, Velocidade velocidade, Ataque ataque) {
         this.largura = 20;
@@ -67,31 +53,6 @@ public abstract class Personagem extends Observable {
 
     public void receberVida(Integer vida) {
         estado.receberVida(vida);
-    }
-
-    public void mostraPos() {
-        setChanged();
-        notifyObservers();
-    }
-
-    public void addObserver(Observer o) {
-        super.addObserver(o);
-
-        Inimigo i = (Inimigo) o;
-        this.inimigos.add(i);
-    }
-
-    public void deleteObserver(Observer o) {
-        super.deleteObserver(o);
-
-        Inimigo i = (Inimigo) o;
-        this.inimigos.remove(i);
-    }
-
-    public void deleteObservers() {
-        super.deleteObservers();
-
-        this.inimigos.clear();
     }
 
     // GETTERS SETTERS...
@@ -182,13 +143,5 @@ public abstract class Personagem extends Observable {
 
     public void setAltura(int altura) {
         this.altura = altura;
-    }
-
-    public List<Inimigo> getInimigos() {
-        return inimigos;
-    }
-
-    public void setInimigos(List<Inimigo> inimigos) {
-        this.inimigos = inimigos;
     }
 }

@@ -5,7 +5,7 @@ import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
 import entities.estrategias.impl.*;
-import entities.personagem.Personagem;
+import entities.observer.Personagem;
 
 public class EstadoForte extends Estado {
 

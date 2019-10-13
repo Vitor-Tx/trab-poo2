@@ -1,4 +1,4 @@
-package entities.personagem.impl;
+package entities.observer;
 
 import entities.Jogo;
 import entities.auxiliars.AudioPlayer;
@@ -9,11 +9,15 @@ import entities.chain.impl.EscudoMedio;
 import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
-import entities.personagem.Personagem;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observer;
 
 public class Jogador extends Personagem {
 
     private Escudo escudo;
+    private List<Inimigo> inimigos = new ArrayList<>();
 
     private int areaAtaque = 20;
 
@@ -57,6 +61,39 @@ public class Jogador extends Personagem {
     public void receberDano(Integer dano) {
         AudioPlayer.playSound(Jogo.hurtUrl);
         getEstado().receberDano(escudo.defender(dano));
+    }
+
+    public void addObserver(Observer o) {
+        super.addObserver(o);
+
+        Inimigo i = (Inimigo) o;
+        this.inimigos.add(i);
+    }
+
+    public void deleteObserver(Observer o) {
+        super.deleteObserver(o);
+
+        Inimigo i = (Inimigo) o;
+        this.inimigos.remove(i);
+    }
+
+    public void deleteObservers() {
+        super.deleteObservers();
+
+        this.inimigos.clear();
+    }
+
+    public void mostraPos() {
+        setChanged();
+        notifyObservers();
+    }
+
+    public List<Inimigo> getInimigos() {
+        return inimigos;
+    }
+
+    public void setInimigos(List<Inimigo> inimigos) {
+        this.inimigos = inimigos;
     }
 
     public Escudo getEscudo() {

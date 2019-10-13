@@ -4,11 +4,7 @@ import entities.estado.Estado;
 import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
-import entities.estrategias.impl.AtaqueMedio;
-import entities.estrategias.impl.PuloMedio;
-import entities.estrategias.impl.VelocidadeMedia;
-import entities.personagem.Personagem;
-import entities.auxiliars.Posicao;
+import entities.observer.Personagem;
 
 public class EstadoNormal extends Estado {
 

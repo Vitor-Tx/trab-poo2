@@ -3,11 +3,10 @@ package entities.decorators;
 import entities.Jogo;
 import entities.auxiliars.AudioPlayer;
 import entities.auxiliars.Posicao;
-import entities.personagem.Personagem;
 import entities.decorators.impl.Gelo;
 import entities.decorators.impl.Fogo;
 import entities.decorators.impl.Veneno;
-import entities.personagem.impl.Jogador;
+import entities.observer.Jogador;
 
 import java.util.Random;
 

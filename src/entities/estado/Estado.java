@@ -5,7 +5,7 @@ import entities.auxiliars.Posicao;
 import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
-import entities.personagem.Personagem;
+import entities.observer.Personagem;
 import entities.estado.impl.EstadoForte;
 import entities.estado.impl.EstadoMorto;
 import entities.estado.impl.EstadoNormal;

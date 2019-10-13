@@ -1,8 +1,7 @@
-package entities.personagem.impl;
+package entities.observer.impl;
 
-import entities.estado.impl.EstadoNormal;
 import entities.estrategias.impl.*;
-import entities.personagem.Personagem;
+import entities.observer.Jogador;
 
 public class Jogador02 extends Jogador {
 

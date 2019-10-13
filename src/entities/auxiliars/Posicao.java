@@ -1,7 +1,7 @@
 package entities.auxiliars;
 
 import entities.decorators.Item;
-import entities.personagem.Personagem;
+import entities.observer.Personagem;
 
 public class Posicao {
 

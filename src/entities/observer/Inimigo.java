@@ -1,4 +1,4 @@
-package entities.personagem.impl;
+package entities.observer;
 
 import entities.Jogo;
 import entities.auxiliars.AudioPlayer;
@@ -8,7 +8,6 @@ import entities.estado.impl.EstadoMorto;
 import entities.estrategias.impl.AtaqueForte;
 import entities.estrategias.impl.PuloBaixo;
 import entities.estrategias.impl.VelocidadeDevagar;
-import entities.personagem.Personagem;
 
 import java.util.Observable;
 import java.util.Observer;

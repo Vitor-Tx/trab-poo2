@@ -5,9 +5,8 @@ import entities.estrategias.Ataque;
 import entities.estrategias.Pulo;
 import entities.estrategias.Velocidade;
 import entities.estrategias.impl.AtaqueFraco;
-import entities.estrategias.impl.PuloBaixo;
 import entities.estrategias.impl.VelocidadeDevagar;
-import entities.personagem.Personagem;
+import entities.observer.Personagem;
 
 public class EstadoPerigo extends Estado {
 

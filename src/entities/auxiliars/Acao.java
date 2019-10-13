@@ -1,7 +1,6 @@
 package entities.auxiliars;
 
-import entities.personagem.Personagem;
-import entities.personagem.impl.Jogador;
+import entities.observer.Jogador;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

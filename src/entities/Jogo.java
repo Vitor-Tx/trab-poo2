@@ -4,9 +4,9 @@ import entities.auxiliars.Posicao;
 import entities.decorators.Item;
 import entities.auxiliars.Acao;
 import entities.estado.impl.EstadoMorto;
-import entities.personagem.impl.Inimigo;
-import entities.personagem.impl.Jogador;
-import entities.personagem.impl.Jogador01;
+import entities.observer.Inimigo;
+import entities.observer.Jogador;
+import entities.observer.impl.Jogador01;
 
 import javax.swing.*;
 import java.awt.*;
