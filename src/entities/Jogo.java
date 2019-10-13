@@ -92,7 +92,7 @@ public class Jogo extends JPanel {
 
         for (Inimigo i : inimigos) {
             if (i != null) {
-                g2d.setColor(Color.BLUE);
+                g2d.setColor(Color.RED);
                 g2d.fillRect(i.getPosicao().getX(), i.getPosicao().getY(), larguraPersonagem, alturaPersonagem);
             }
         }
@@ -160,7 +160,7 @@ public class Jogo extends JPanel {
     private void desenhaHUD(Graphics2D g2d) {
         if (jogador == null) return;
 
-        g2d.setColor(Color.RED);
+        g2d.setColor(Color.GREEN);
         g2d.fillRect(0, alturaJanela - 30, jogador.getSaude() * 5, 40);
 
         g2d.setColor(Color.BLUE);
