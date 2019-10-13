@@ -28,7 +28,6 @@ public abstract class Personagem extends Observable {
     private Pulo pulo, defaultPulo;
     private Velocidade velocidade, defaultVelocidade;
     private Ataque ataque, defaultAtaque;
-    private Escudo escudo;
 
     private Estado estado;
     private Integer saude;
@@ -47,9 +46,6 @@ public abstract class Personagem extends Observable {
         this.defaultVelocidade = velocidade;
         this.defaultAtaque = ataque;
         this.estado = new EstadoNormal(this, getDefaultPulo(), getDefaultVelocidade(), getDefaultAtaque());
-        this.escudo = new EscudoForte(15);
-        this.escudo.setSucessor(new EscudoMedio(10));
-        this.escudo.getSucessor().setSucessor(new EscudoFraco(5));
     }
 
     public Personagem(int l, int a, Pulo pulo, Velocidade velocidade, Ataque ataque) {
@@ -59,9 +55,6 @@ public abstract class Personagem extends Observable {
         this.defaultVelocidade = velocidade;
         this.defaultAtaque = ataque;
         this.estado = new EstadoNormal(this, getDefaultPulo(), getDefaultVelocidade(), getDefaultAtaque());
-        this.escudo = new EscudoForte(15);
-        this.escudo.setSucessor(new EscudoMedio(10));
-        this.escudo.getSucessor().setSucessor(new EscudoFraco(5));
     }
 
     public void setEstragetias(Pulo pulo, Velocidade velocidade, Ataque ataque) {
@@ -70,10 +63,7 @@ public abstract class Personagem extends Observable {
         this.ataque = ataque;
     }
 
-    public void receberDano(Integer dano) {
-        AudioPlayer.playSound(Jogo.hurtUrl);
-        estado.receberDano(escudo.defender(dano));
-    }
+    public abstract void receberDano(Integer dano);
 
     public void receberVida(Integer vida) {
         estado.receberVida(vida);
@@ -82,19 +72,6 @@ public abstract class Personagem extends Observable {
     public void mostraPos() {
         setChanged();
         notifyObservers();
-    }
-
-    public void atacar() {
-        if (inimigos.size() == 0) return;
-
-        for (Inimigo i : inimigos) {
-
-            // Faz aqui a verificação se o inimigo esta na area de receber ataque, tenta conseguir implementar sem ajuda
-            // Por estar "true" ele vai sempre conseguir atacar o inimigo, independente da posição
-            if (true) {
-                i.receberDano(ataque.forca());
-            }
-        }
     }
 
     public void addObserver(Observer o) {
@@ -165,14 +142,6 @@ public abstract class Personagem extends Observable {
 
     public void setDefaultAtaque(Ataque defaultAtaque) {
         this.defaultAtaque = defaultAtaque;
-    }
-
-    public Escudo getEscudo() {
-        return escudo;
-    }
-
-    public void setEscudo(Escudo escudo) {
-        this.escudo = escudo;
     }
 
     public Estado getEstado() {

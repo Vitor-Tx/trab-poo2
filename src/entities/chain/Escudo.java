@@ -66,4 +66,11 @@ public abstract class Escudo {
         else return dano;
     }
 
+    public int getCargaTotal() {
+        int cargaTotal = carga;
+
+        if (getSucessor() != null) cargaTotal += getSucessor().getCargaTotal();
+
+        return cargaTotal;
+    }
 }

@@ -1,6 +1,7 @@
 package entities.auxiliars;
 
 import entities.personagem.Personagem;
+import entities.personagem.impl.Jogador;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,7 +10,7 @@ import java.util.Set;
 
 public class Acao implements KeyListener {
 
-    private Personagem p;
+    private Jogador j;
 
     private int larguraJanela;
     private int alturaJanela;
@@ -21,12 +22,12 @@ public class Acao implements KeyListener {
         this.alturaJanela = altura;
     }
 
-    public Personagem getP() {
-        return p;
+    public Jogador getJ() {
+        return j;
     }
 
-    public void setP(Personagem p) {
-        this.p = p;
+    public void setJ(Jogador j) {
+        this.j = j;
     }
 
     public void realizarMovimento() {
@@ -34,43 +35,43 @@ public class Acao implements KeyListener {
             if (teclas.contains(KeyEvent.VK_LEFT) && teclas.contains(KeyEvent.VK_UP) &&
                     !teclas.contains(KeyEvent.VK_RIGHT) && !teclas.contains(KeyEvent.VK_DOWN)) {
                 if (isOnLimitBottomX() && isOnLimitBottomY()) {
-                    p.getPosicao().movNoroeste();
+                    j.getPosicao().movNoroeste();
                 }
             } else if (!teclas.contains(KeyEvent.VK_LEFT) && teclas.contains(KeyEvent.VK_UP) &&
                     teclas.contains(KeyEvent.VK_RIGHT) && !teclas.contains(KeyEvent.VK_DOWN)) {
                 if (isOnLimitTopX() && isOnLimitBottomY()) {
-                    p.getPosicao().movNordeste();
+                    j.getPosicao().movNordeste();
                 }
             } else if (!teclas.contains(KeyEvent.VK_LEFT) && !teclas.contains(KeyEvent.VK_UP) &&
                     teclas.contains(KeyEvent.VK_RIGHT) && teclas.contains(KeyEvent.VK_DOWN)) {
                 if (isOnLimitTopX() && isOnLimitTopY()) {
-                    p.getPosicao().movSudeste();
+                    j.getPosicao().movSudeste();
                 }
             } else if (teclas.contains(KeyEvent.VK_LEFT) && !teclas.contains(KeyEvent.VK_UP) &&
                     !teclas.contains(KeyEvent.VK_RIGHT) && teclas.contains(KeyEvent.VK_DOWN)) {
                 if (isOnLimitBottomX() && isOnLimitTopY()) {
-                    p.getPosicao().movSudoeste();
+                    j.getPosicao().movSudoeste();
                 }
             }
         } else if (teclas.size() == 1) {
             if (teclas.contains(KeyEvent.VK_LEFT))
                 if (isOnLimitBottomX())
-                    p.getPosicao().movOeste();
+                    j.getPosicao().movOeste();
 
             if (teclas.contains(KeyEvent.VK_RIGHT))
                 if (isOnLimitTopX())
-                    p.getPosicao().movLeste();
+                    j.getPosicao().movLeste();
 
             if (teclas.contains(KeyEvent.VK_UP))
                 if (isOnLimitBottomY())
-                    p.getPosicao().movNorte();
+                    j.getPosicao().movNorte();
 
             if (teclas.contains(KeyEvent.VK_DOWN))
                 if (isOnLimitTopY())
-                    p.getPosicao().movSul();
+                    j.getPosicao().movSul();
 
             if (teclas.contains(KeyEvent.VK_SPACE))
-                p.atacar();
+                j.atacar();
         }
     }
 
@@ -90,18 +91,18 @@ public class Acao implements KeyListener {
     }
 
     private boolean isOnLimitTopX() {
-        return p.getPosicao().getX() < (larguraJanela - 20);
+        return j.getPosicao().getX() < (larguraJanela - 20);
     }
 
     private boolean isOnLimitBottomX() {
-        return p.getPosicao().getX() > 0;
+        return j.getPosicao().getX() > 0;
     }
 
     private boolean isOnLimitTopY() {
-        return p.getPosicao().getY() < (alturaJanela - 40);
+        return j.getPosicao().getY() < (alturaJanela - 40);
     }
 
     private boolean isOnLimitBottomY() {
-        return p.getPosicao().getY() > 0;
+        return j.getPosicao().getY() > 0;
     }
 }

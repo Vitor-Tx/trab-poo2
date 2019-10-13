@@ -6,13 +6,9 @@ import entities.auxiliars.Posicao;
 import entities.auxiliars.SetTimeout;
 import entities.estado.impl.EstadoMorto;
 import entities.estrategias.impl.AtaqueForte;
-import entities.estrategias.impl.AtaqueFraco;
 import entities.estrategias.impl.PuloBaixo;
 import entities.estrategias.impl.VelocidadeDevagar;
 import entities.personagem.Personagem;
-import entities.decorators.impl.Gelo;
-import entities.decorators.impl.Veneno;
-import entities.decorators.impl.Fogo;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -20,7 +16,8 @@ import java.util.Observer;
 public class Inimigo extends Personagem implements Observer {
 
     private boolean podeAtacar = true;
-    private int delayAtaque = 1000;
+    private boolean podeAndar = true;
+    private int delay = 1000;
 
     public Inimigo(int x, int y) {
         super(new PuloBaixo(), new VelocidadeDevagar(), new AtaqueForte());
@@ -37,7 +34,7 @@ public class Inimigo extends Personagem implements Observer {
             System.out.println("\nInimigo " + this + " atacou personagem " + p);
             p.receberDano(getAtaque().forca());
             podeAtacar = false;
-            SetTimeout.setTimeout(() -> podeAtacar = true, delayAtaque);
+            SetTimeout.setTimeout(() -> podeAtacar = true, delay);
         }
     }
 
@@ -45,6 +42,9 @@ public class Inimigo extends Personagem implements Observer {
     public void receberDano(Integer dano) {
         AudioPlayer.playSound(Jogo.inimigoHurtUrl);
         getEstado().receberDano(dano);
+        podeAndar = false;
+        SetTimeout.setTimeout(() -> podeAndar = true, delay);
+
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Inimigo extends Personagem implements Observer {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            } else {
+            } else if (podeAndar) {
                 if (p.getPosicao().getX() > getPosicao().getX()) getPosicao().movLeste();
                 else getPosicao().movOeste();
 

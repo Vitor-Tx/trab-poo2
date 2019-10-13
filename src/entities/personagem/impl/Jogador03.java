@@ -4,13 +4,13 @@ import entities.estado.impl.EstadoNormal;
 import entities.estrategias.impl.*;
 import entities.personagem.Personagem;
 
-public class Personagem03 extends Personagem {
+public class Jogador03 extends Jogador {
 
-    public Personagem03() {
+    public Jogador03() {
         super(new PuloBaixo(), new VelocidadeRapida(), new AtaqueForte());
     }
 
-    public Personagem03(int l, int a) {
+    public Jogador03(int l, int a) {
         super(new PuloBaixo(), new VelocidadeRapida(), new AtaqueForte());
     }
 }
