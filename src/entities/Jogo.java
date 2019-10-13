@@ -163,7 +163,7 @@ public class Jogo extends JPanel {
         g2d.setColor(Color.GREEN);
         g2d.fillRect(0, alturaJanela - 30, jogador.getSaude() * 5, 40);
 
-        g2d.setColor(Color.BLUE);
+        g2d.setColor(Color.CYAN);
         g2d.fillRect(larguraJanela - (jogador.getEscudo().getCargaTotal() * 5), alturaJanela - 30, jogador.getEscudo().getCargaTotal() * 5, 40);
     }
 
