@@ -1,5 +1,6 @@
 package controller;
 
+import model.decorator.Item;
 import model.observer.Personagem;
 
 public class Posicao {

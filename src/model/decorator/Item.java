@@ -1,5 +1,7 @@
-package controller;
+package model.decorator;
 
+import controller.AudioPlayer;
+import controller.Posicao;
 import model.decorator.impl.Gelo;
 import model.decorator.impl.Fogo;
 import model.decorator.impl.Veneno;

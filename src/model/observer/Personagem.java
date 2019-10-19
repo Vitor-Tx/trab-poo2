@@ -24,7 +24,6 @@ public abstract class Personagem extends Observable {
     private int altura;
 
 
-
     public Personagem(Pulo pulo, Velocidade velocidade, Ataque ataque) {
         this.largura = 20;
         this.altura = 40;

@@ -10,6 +10,6 @@ public class Jogador02 extends Jogador {
     }
 
     public Jogador02(int l, int a) {
-        super(new PuloAlto(), new VelocidadeRapida(), new AtaqueMedio());
+        super(l, a, new PuloAlto(), new VelocidadeRapida(), new AtaqueMedio());
     }
 }

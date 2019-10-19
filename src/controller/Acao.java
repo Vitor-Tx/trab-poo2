@@ -30,48 +30,24 @@ public class Acao implements KeyListener {
     }
 
     public void realizarMovimento() {
-        if (teclas.size() > 1) {
-            if (teclas.contains(KeyEvent.VK_LEFT) && teclas.contains(KeyEvent.VK_UP) &&
-                    !teclas.contains(KeyEvent.VK_RIGHT) && !teclas.contains(KeyEvent.VK_DOWN)) {
-                if (isOnLimitBottomX() && isOnLimitBottomY()) {
-                    j.getPosicao().movNoroeste();
-                }
-            } else if (!teclas.contains(KeyEvent.VK_LEFT) && teclas.contains(KeyEvent.VK_UP) &&
-                    teclas.contains(KeyEvent.VK_RIGHT) && !teclas.contains(KeyEvent.VK_DOWN)) {
-                if (isOnLimitTopX() && isOnLimitBottomY()) {
-                    j.getPosicao().movNordeste();
-                }
-            } else if (!teclas.contains(KeyEvent.VK_LEFT) && !teclas.contains(KeyEvent.VK_UP) &&
-                    teclas.contains(KeyEvent.VK_RIGHT) && teclas.contains(KeyEvent.VK_DOWN)) {
-                if (isOnLimitTopX() && isOnLimitTopY()) {
-                    j.getPosicao().movSudeste();
-                }
-            } else if (teclas.contains(KeyEvent.VK_LEFT) && !teclas.contains(KeyEvent.VK_UP) &&
-                    !teclas.contains(KeyEvent.VK_RIGHT) && teclas.contains(KeyEvent.VK_DOWN)) {
-                if (isOnLimitBottomX() && isOnLimitTopY()) {
-                    j.getPosicao().movSudoeste();
-                }
-            }
-        } else if (teclas.size() == 1) {
-            if (teclas.contains(KeyEvent.VK_LEFT))
-                if (isOnLimitBottomX())
-                    j.getPosicao().movOeste();
+        if (teclas.contains(KeyEvent.VK_LEFT))
+            if (isOnLimitBottomX())
+                j.getPosicao().movOeste();
 
-            if (teclas.contains(KeyEvent.VK_RIGHT))
-                if (isOnLimitTopX())
-                    j.getPosicao().movLeste();
+        if (teclas.contains(KeyEvent.VK_RIGHT))
+            if (isOnLimitTopX())
+                j.getPosicao().movLeste();
 
-            if (teclas.contains(KeyEvent.VK_UP))
-                if (isOnLimitBottomY())
-                    j.getPosicao().movNorte();
+        if (teclas.contains(KeyEvent.VK_UP))
+            if (isOnLimitBottomY())
+                j.getPosicao().movNorte();
 
-            if (teclas.contains(KeyEvent.VK_DOWN))
-                if (isOnLimitTopY())
-                    j.getPosicao().movSul();
+        if (teclas.contains(KeyEvent.VK_DOWN))
+            if (isOnLimitTopY())
+                j.getPosicao().movSul();
 
-            if (teclas.contains(KeyEvent.VK_SPACE))
-                j.atacar();
-        }
+        if (teclas.contains(KeyEvent.VK_SPACE))
+            j.atacar();
     }
 
     @Override

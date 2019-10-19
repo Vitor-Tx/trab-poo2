@@ -1,12 +1,13 @@
 package view;
 
 import controller.Acao;
-import controller.Item;
+import model.decorator.Item;
 import controller.Posicao;
+import model.observer.impl.Jogador01;
+import model.observer.impl.Jogador02;
 import model.state.impl.EstadoMorto;
 import model.observer.Inimigo;
 import model.observer.Jogador;
-import model.observer.impl.Jogador01;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,7 +59,7 @@ public class Jogo extends JPanel {
             verificaInimigosMortos();
             verificaItensPegos();
 
-            if (jogador.getEstado() instanceof EstadoMorto) {
+            if (jogador.getEstado() instanceof EstadoMorto || jogador.getInimigos().size() == 0) {
                 int resposta = JOptionPane.showConfirmDialog(this, "Deseja reiniciar o jogo?", "Confirma\u00e7\u00e3o",
                         JOptionPane.YES_NO_OPTION);
                 if (resposta == JOptionPane.YES_OPTION) {
@@ -71,7 +72,7 @@ public class Jogo extends JPanel {
                 acao.realizarMovimento();
             }
             game.repaint();
-            Thread.sleep(50);
+            Thread.sleep(40);
         }
     }
 
@@ -87,11 +88,11 @@ public class Jogo extends JPanel {
 
         if (jogador != null) {
             g2d.setColor(Color.BLACK);
-            g2d.fillRect(jogador.getPosicao().getX(), jogador.getPosicao().getY(), larguraPersonagem, alturaPersonagem);
+            g2d.fillRect(jogador.getPosicao().getX(), jogador.getPosicao().getY(), jogador.getLargura(), jogador.getAltura());
         }
 
         for (Inimigo i : inimigos) {
-            if (i != null) {
+            if (i != null && !(i.getEstado() instanceof EstadoMorto)) {
                 g2d.setColor(Color.RED);
                 g2d.fillRect(i.getPosicao().getX(), i.getPosicao().getY(), larguraPersonagem, alturaPersonagem);
             }
@@ -119,7 +120,7 @@ public class Jogo extends JPanel {
     }
 
     private void inicializarEntidades() {
-        jogador = new Jogador01(larguraPersonagem, alturaPersonagem);
+        jogador = new Jogador01();
         acao.setJ(jogador);
 
         for (int i = 0; i < contagemInicialInimigos; i++) {

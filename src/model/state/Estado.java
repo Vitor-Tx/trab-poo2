@@ -66,8 +66,6 @@ public abstract class Estado {
             this.personagem.setEstado(new EstadoNormal(personagem));
         } else if (s <= limiteMaxVidaForte) {
             this.personagem.setEstado(new EstadoForte(personagem));
-        } else {
-            System.out.println("ESTADO DIVINO FODAO!!!\nOHHHHHHHHHH OHHHHHHHHH ÓOOHHHH...");
         }
     }
 
