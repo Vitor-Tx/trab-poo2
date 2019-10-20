@@ -20,6 +20,7 @@ public class Jogo extends JPanel {
     public Random random = new Random();
 
     private Jogador jogador;
+    private JLabel ataqueHUD = new JLabel("");
 
     private List<Inimigo> inimigos = new ArrayList<>();
     private List<Item> itens = new ArrayList<>();
@@ -47,6 +48,9 @@ public class Jogo extends JPanel {
 
     public void iniciar(Jogo game) throws InterruptedException {
         JFrame frame = new JFrame("O Jogo");
+        ataqueHUD.setFont(new Font("Arial", Font.BOLD, 16));
+        ataqueHUD.setForeground(Color.RED);
+        game.add(ataqueHUD);
         frame.add(game);
         frame.setSize(larguraJanela, alturaJanela);
         frame.setResizable(false);
@@ -95,6 +99,9 @@ public class Jogo extends JPanel {
             if (i != null && !(i.getEstado() instanceof EstadoMorto)) {
                 g2d.setColor(Color.RED);
                 g2d.fillRect(i.getPosicao().getX(), i.getPosicao().getY(), larguraPersonagem, alturaPersonagem);
+
+                g2d.setColor(Color.GREEN);
+                g2d.fillRect(i.getPosicao().getX(), i.getPosicao().getY() - 10, i.getSaude(), 5);
             }
         }
 
@@ -160,6 +167,8 @@ public class Jogo extends JPanel {
 
     private void desenhaHUD(Graphics2D g2d) {
         if (jogador == null) return;
+
+        ataqueHUD.setText("Força de ataque: " + jogador.getAtaque().forca());
 
         g2d.setColor(Color.GREEN);
         g2d.fillRect(0, alturaJanela - 30, jogador.getSaude() * 5, 40);

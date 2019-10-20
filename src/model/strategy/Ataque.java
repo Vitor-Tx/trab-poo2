@@ -1,6 +1,6 @@
 package model.strategy;
 
-public abstract class Ataque {
+public interface Ataque {
 
-    public abstract int forca();
+    int forca();
 }
