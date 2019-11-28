@@ -1,9 +1,11 @@
 package model.factory;
 
-import model.observer.Personagem;
+import model.observer.Jogador;
 
 public abstract class FactoryJogador {
 
-    public abstract Personagem criaJogador();
+    public abstract Jogador criaJogador();
+
+
 
 }
