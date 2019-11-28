@@ -23,6 +23,9 @@ public abstract class Personagem extends Observable {
     private int largura;
     private int altura;
 
+    public Personagem () {
+        
+    }
 
     public Personagem(Pulo pulo, Velocidade velocidade, Ataque ataque) {
         this.largura = 20;
