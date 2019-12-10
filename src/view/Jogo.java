@@ -3,6 +3,9 @@ package view;
 import controller.Acao;
 import model.decorator.Item;
 import controller.Posicao;
+import model.factory.FactoryJogador;
+import model.factory.impl.AdvancedJogadorfactory;
+import model.factory.impl.SimpleJogadorfactory;
 import model.observer.impl.Jogador01;
 import model.observer.impl.Jogador02;
 import model.state.impl.EstadoMorto;
@@ -20,6 +23,7 @@ public class Jogo extends JPanel {
     public Random random = new Random();
 
     private Jogador jogador;
+    private FactoryJogador jogadorFactory;
     private JLabel ataqueHUD = new JLabel("");
 
     private List<Inimigo> inimigos = new ArrayList<>();
@@ -127,7 +131,10 @@ public class Jogo extends JPanel {
     }
 
     private void inicializarEntidades() {
-        jogador = new Jogador01();
+        int op = 1;
+
+        criaEntidade(op);
+
         acao.setJ(jogador);
 
         for (int i = 0; i < contagemInicialInimigos; i++) {
@@ -175,6 +182,19 @@ public class Jogo extends JPanel {
 
         g2d.setColor(Color.BLUE);
         g2d.fillRect(larguraJanela - (jogador.getEscudo().getCargaTotal() * 5), alturaJanela - 30, jogador.getEscudo().getCargaTotal() * 5, 40);
+    }
+
+    private Jogador criaEntidade (int op) {
+
+        if (op == 1) {
+            jogadorFactory = SimpleJogadorfactory.getInstance();
+            jogador = jogadorFactory.criaJogador();
+        } else if (op == 2) {
+            jogadorFactory = AdvancedJogadorfactory.getInstance();
+            jogador = jogadorFactory.criaJogador();
+        }
+
+        return jogador;
     }
 
     public static int getEsquerda(Posicao p) {

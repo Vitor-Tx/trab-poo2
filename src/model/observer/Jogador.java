@@ -57,6 +57,33 @@ public class Jogador extends Personagem {
         }
     }
 
+    public Velocidade correr() {
+        return getDefaultVelocidade();
+    }
+
+    public Pulo pular() {
+        return getDefaultPulo();
+    }
+
+    public void magia() {
+
+    }
+
+    public void baixo() {
+    }
+
+    public void cima() {
+
+    }
+
+    public void direita() {
+
+    }
+
+    public void esquerda() {
+
+    }
+
     @Override
     public void receberDano(Integer dano) {
         AudioPlayer.playSound(Jogo.hurtUrl);
