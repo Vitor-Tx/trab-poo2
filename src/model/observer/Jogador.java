@@ -84,6 +84,7 @@ public class Jogador extends Personagem {
 
     public void pular() {
         getPosicao().movPulo();
+        AudioPlayer.playSound(Jogo.jumpUrl);
     }
 
     public void correr() {
