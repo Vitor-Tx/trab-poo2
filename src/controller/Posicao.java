@@ -67,6 +67,16 @@ public class Posicao {
 //        toString();
     }
 
+    public void movPulo() {
+        if (p.getVelocidade() == null) return;
+
+        this.x += p.getVelocidade().vel() * 2;
+    }
+
+    public void movCorrer() {
+        this.x += p.getVelocidade().vel() * 5;
+    }
+
     public void movNordeste() {
         movNorte();
         movLeste();

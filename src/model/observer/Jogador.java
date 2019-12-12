@@ -1,5 +1,6 @@
 package model.observer;
 
+import controller.Acao;
 import view.Jogo;
 import controller.AudioPlayer;
 import model.chain.Escudo;
@@ -21,12 +22,16 @@ public class Jogador extends Personagem {
 
     private int areaAtaque = 20;
 
+    private Acao acao;
+
+
     public Jogador(Pulo pulo, Velocidade velocidade, Ataque ataque) {
         super(pulo, velocidade, ataque);
 
         this.escudo = new EscudoForte(15);
         this.escudo.setSucessor(new EscudoMedio(10));
         this.escudo.getSucessor().setSucessor(new EscudoFraco(5));
+
     }
 
     public Jogador(int l, int a, Pulo pulo, Velocidade velocidade, Ataque ataque) {
@@ -57,31 +62,32 @@ public class Jogador extends Personagem {
         }
     }
 
-    public Velocidade correr() {
-        return getDefaultVelocidade();
-    }
-
-    public Pulo pular() {
-        return getDefaultPulo();
-    }
-
     public void magia() {
+        if (getInimigos().size() == 0) return;
 
+        int je = Jogo.getEsquerda(getPosicao()) - areaAtaque;
+        int jd = Jogo.getDireita(getPosicao(), getLargura()) + areaAtaque;
+        int jc = Jogo.getCima(getPosicao()) - areaAtaque;
+        int jb = Jogo.getBaixo(getPosicao(), getAltura()) + areaAtaque;
+
+        for (Inimigo i : getInimigos()) {
+            int ie = Jogo.getEsquerda(i.getPosicao());
+            int id = Jogo.getDireita(i.getPosicao(), i.getLargura());
+            int ic = Jogo.getCima(i.getPosicao());
+            int ib = Jogo.getBaixo(i.getPosicao(), i.getAltura());
+
+            if (Jogo.entrouEmContato(je, jd, jc, jb, ie, id, ic, ib)) {
+                i.receberDano(getAtaque().forca());
+            }
+        }
     }
 
-    public void baixo() {
+    public void pular() {
+        getPosicao().movPulo();
     }
 
-    public void cima() {
-
-    }
-
-    public void direita() {
-
-    }
-
-    public void esquerda() {
-
+    public void correr() {
+        getPosicao().movCorrer();
     }
 
     @Override
