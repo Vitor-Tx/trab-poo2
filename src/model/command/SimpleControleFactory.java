@@ -17,7 +17,7 @@ public class SimpleControleFactory {
         return c;
     }
 
-    public static Jogador ExecuteCommands(Jogador j, int op) {
+    public static void ExecuteCommands(Jogador j, int op) {
         Controle c = new Controle();
         LeftCommand left = new LeftCommand(j);
         RightCommand right = new RightCommand(j);
@@ -41,30 +41,20 @@ public class SimpleControleFactory {
 
         if (op == 0) {
             c.pressBotaoL(0);
-            return j;
         } else if (op == 1) {
             c.pressBotaoL(1);
-            return j;
         } else if (op == 2) {
             c.pressBotaoL(2);
-            return j;
         } else if (op == 3) {
             c.pressBotaoL(3);
-            return j;
         } else if (op == 4) {
             c.pressBotaoR(0);
-            return j;
         } else if (op == 5) {
             c.pressBotaoR(1);
-            return j;
         } else if (op == 6) {
             c.pressBotaoR(2);
-            return j;
         } else if (op == 7) {
             c.pressBotaoR(3);
-            return j;
         }
-
-        return null;
     }
 }

@@ -85,6 +85,7 @@ public class Jogo extends JPanel {
             } else {
                 jogador.mostraPos();
                 acao.realizarMovimento();
+                acao.realizaAcao();
             }
             game.repaint();
             Thread.sleep(40);
@@ -138,7 +139,10 @@ public class Jogo extends JPanel {
     }
 
     private void inicializarEntidades() {
-        int op = 1;
+        String[] ops = {"Simple", "Avancado"};
+
+        int op = JOptionPane.showOptionDialog(this, "Qual tipo de Jogador deseja?", "Selecione",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,ops, ops[0]);
 
         criaEntidade(op);
 
