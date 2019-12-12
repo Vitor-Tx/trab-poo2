@@ -78,12 +78,16 @@ public class Jogo extends JPanel {
                 if (resposta == JOptionPane.YES_OPTION) {
                     inicializarEntidades();
                 } else {
+                    int resp = JOptionPane.showConfirmDialog(this, "Deseja ver o log de comandos?", "Confirma\u00e7\u00e3o",
+                            JOptionPane.YES_NO_OPTION);
+                    if (resp == JOptionPane.YES_OPTION) {
+                        acao.getControle().getLog();
+                    }
                     System.exit(0);
                 }
             } else {
                 jogador.mostraPos();
                 acao.realizarMovimento();
-                acao.realizaAcao();
             }
             game.repaint();
             Thread.sleep(40);

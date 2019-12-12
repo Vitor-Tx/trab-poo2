@@ -1,5 +1,6 @@
-package model.command;
+package model.factory.impl;
 
+import model.command.Controle;
 import model.command.impl.BotaoL.DownCommand;
 import model.command.impl.BotaoL.LeftCommand;
 import model.command.impl.BotaoL.RightCommand;

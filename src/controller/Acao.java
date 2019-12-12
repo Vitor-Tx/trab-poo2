@@ -1,7 +1,7 @@
 package controller;
 
 import model.command.Controle;
-import model.command.SimpleControleFactory;
+import model.factory.impl.SimpleControleFactory;
 import model.observer.Jogador;
 
 import java.awt.event.KeyEvent;
@@ -65,13 +65,12 @@ public class Acao implements KeyListener {
                 controle.ExecuteCommands(3);
             }
         }
-    }
 
-    public void realizaAcao() {
         if (teclas.contains(KeyEvent.VK_SPACE)) {
             //j.atacar();
             controle.ExecuteCommands(4);
         }
+
         if (teclas.contains(KeyEvent.VK_A)) {
             //j.magia();
             controle.ExecuteCommands(5);
@@ -85,6 +84,11 @@ public class Acao implements KeyListener {
             controle.ExecuteCommands(7);
         }
     }
+
+    public Controle getControle(){
+        return this.controle;
+    }
+
 
     @Override
     public synchronized void keyPressed(KeyEvent e) {
