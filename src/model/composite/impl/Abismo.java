@@ -1,6 +1,7 @@
 package model.composite.impl;
 
 import model.composite.Sala;
+import model.observer.impl.NPC;
 
 public class Abismo extends Sala {
 
@@ -8,8 +9,8 @@ public class Abismo extends Sala {
 
     }
     @Override
-    public Sala entrar() {
-        System.out.println("Opa, você perdeu o jogo, caiu no abismo!\n");
-        return null;
+    public Sala entrar(NPC npc) {
+        System.out.println("Opa, " +npc.getNome() +  " perdeu o jogo, caiu no abismo!\n");
+        return this;
     }
 }

@@ -2,6 +2,7 @@ package model.composite.impl;
 
 import model.composite.Sala;
 import model.observer.Inimigo;
+import model.observer.impl.NPC;
 
 public class SalaComposta extends Sala {
     public Sala sala1;
@@ -11,29 +12,60 @@ public class SalaComposta extends Sala {
     public void setSalas(Sala sala1, Sala sala2){
         this.sala1 = sala1;
         this.sala2 = sala2;
-        this.inimigo = new Inimigo(0, 0);
+        //this.inimigo = new Inimigo(0, 0);
+        //inimigo.setDefaultAtaque(new AtaqueFraco());
+        //double r = Math.random() * 2;
+        //if(r < 1) this.inimigo.receberDano(40);
+        //else this.inimigo.receberDano(20);
     }
 
-    public SalaComposta(Sala caminho1, Sala caminho2, Inimigo inimigo){
-        this.sala1 = caminho1;
-        this.sala2 = caminho2;
-        this.inimigo = inimigo;
+    public SalaComposta(Sala sala1, Sala sala2, Inimigo inimigo){
+        this.sala1 = sala1;
+        this.sala2 = sala2;
+        //this.inimigo = inimigo;
+        //inimigo.setDefaultAtaque(new AtaqueFraco());
+        //double r = Math.random() * 2;
+        //if(r < 1) this.inimigo.receberDano(40);
+        //else this.inimigo.receberDano(20);
     }
 
     @Override
-    public Sala entrar() {
-        double r = Math.random() * 2;
-
-        System.out.println("Você entrou numa sala com duas entradas, em qual delas você vai entrar?\n");
-
-        if(r < 1){
-            System.out.println("Você entrou na primeira entrada!\n");
-            sala1.entrar();
+    public Sala entrar(NPC npc) {
+        try{
+            Thread.sleep(2000);
+        }
+        catch(Exception e){
         }
 
-        else{
-            System.out.println("Você entrou na segunda entrada!\n");
-            sala2.entrar();
+        System.out.println("NPC "+npc.getNome()+" entrou na sala. A sala tem um inimigo, e mais duas entradas para salas!\n");
+
+        double r = Math.random() * 2;
+
+        if (r < 0.2) {
+            System.out.println("NPC"+ npc.getNome() + " morreu para o inimigo!\n");
+        }
+        else if(r < 0.8){
+            System.out.println("NPC"+ npc.getNome() + " teve que fugir do inimigo!\n");
+        }
+        else {
+            System.out.println("NPC "+npc.getNome()+" Matou o inimigo! ");
+        }
+
+
+
+
+        r = Math.random() * 2;
+
+
+        if (r < 1) {
+            System.out.println("E ele entrou na sala 1!\n");
+            sala1.entrar(npc);
+        }
+        else {
+
+            System.out.println("E ele entrou na sala 2!\n");
+            sala2.entrar(npc);
+
         }
 
         return this;
