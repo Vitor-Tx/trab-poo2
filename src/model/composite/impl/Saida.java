@@ -10,6 +10,8 @@ public class Saida extends Sala {
 
     @Override
     public Sala entrar() {
+
+        System.out.println("Você ganhou o jogo, saiu do labirinto!\n");
         return this;
     }
 }

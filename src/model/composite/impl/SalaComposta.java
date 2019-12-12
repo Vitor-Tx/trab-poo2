@@ -22,6 +22,20 @@ public class SalaComposta extends Sala {
 
     @Override
     public Sala entrar() {
+        double r = Math.random() * 2;
+
+        System.out.println("Você entrou numa sala com duas entradas, em qual delas você vai entrar?\n");
+
+        if(r < 1){
+            System.out.println("Você entrou na primeira entrada!\n");
+            sala1.entrar();
+        }
+
+        else{
+            System.out.println("Você entrou na segunda entrada!\n");
+            sala2.entrar();
+        }
+
         return this;
     }
 }

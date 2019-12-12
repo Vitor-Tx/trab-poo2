@@ -9,6 +9,7 @@ public class Abismo extends Sala {
     }
     @Override
     public Sala entrar() {
+        System.out.println("Opa, você perdeu o jogo, caiu no abismo!\n");
         return null;
     }
 }
