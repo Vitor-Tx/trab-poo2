@@ -12,12 +12,12 @@ import model.observer.Jogador;
 
 public class SimpleControleFactory {
 
-    public Controle getInvoker() {
+    public static Controle getInvoker() {
         Controle c = new Controle();
         return c;
     }
 
-    public Jogador ExecuteCommands(Jogador j, int op) {
+    public static Jogador ExecuteCommands(Jogador j, int op) {
         Controle c = new Controle();
         LeftCommand left = new LeftCommand(j);
         RightCommand right = new RightCommand(j);

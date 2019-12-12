@@ -2,10 +2,6 @@ package controller;
 
 import model.command.Controle;
 import model.command.SimpleControleFactory;
-import model.command.impl.BotaoL.DownCommand;
-import model.command.impl.BotaoL.LeftCommand;
-import model.command.impl.BotaoL.RightCommand;
-import model.command.impl.BotaoL.UpCommand;
 import model.observer.Jogador;
 
 import java.awt.event.KeyEvent;
@@ -16,7 +12,6 @@ import java.util.Set;
 public class Acao implements KeyListener {
 
     private Jogador j;
-    private SimpleControleFactory controleFactory;
     private Controle controle;
 
     private int larguraJanela;
@@ -44,27 +39,28 @@ public class Acao implements KeyListener {
         if (teclas.contains(KeyEvent.VK_LEFT)) {
             if (isOnLimitBottomX()) {
                 //j.getPosicao().movOeste();
-                controleFactory.ExecuteCommands(j,0);
+                SimpleControleFactory.ExecuteCommands(j,0);
             }
         }
         if (teclas.contains(KeyEvent.VK_RIGHT)) {
             if (isOnLimitTopX()) {
                 //j.getPosicao().movLeste();
-                controleFactory.ExecuteCommands(j,1);
+
+                SimpleControleFactory.ExecuteCommands(j,1);
             }
         }
 
         if (teclas.contains(KeyEvent.VK_UP)) {
             if (isOnLimitBottomY()) {
                 //j.getPosicao().movNorte();
-                controleFactory.ExecuteCommands(j,2);
+                SimpleControleFactory.ExecuteCommands(j,2);
             }
         }
 
         if (teclas.contains(KeyEvent.VK_DOWN)) {
-                if (isOnLimitTopY()) {
-                    //j.getPosicao().movSul();
-                controleFactory.ExecuteCommands(j,3);
+            if (isOnLimitTopY()) {
+                //j.getPosicao().movSul();
+                SimpleControleFactory.ExecuteCommands(j,3);
             }
         }
     }
@@ -72,19 +68,19 @@ public class Acao implements KeyListener {
     public void realizaAcao() {
         if (teclas.contains(KeyEvent.VK_SPACE)) {
             //j.atacar();
-            controleFactory.ExecuteCommands(j, 4);
+            SimpleControleFactory.ExecuteCommands(j, 4);
         }
         if (teclas.contains(KeyEvent.VK_A)) {
             //j.magia();
-            controleFactory.ExecuteCommands(j, 5);
+            SimpleControleFactory.ExecuteCommands(j, 5);
         }
         if (teclas.contains(KeyEvent.VK_S)) {
             //j.correr();
-            controleFactory.ExecuteCommands(j,6);
+            SimpleControleFactory.ExecuteCommands(j,6);
         }
         if (teclas.contains(KeyEvent.VK_D)){
             j.pular();
-            //controleFactory.ExecuteCommands(j,7);
+            //SimpleControleFactory.ExecuteCommands(j,7);
         }
     }
 
