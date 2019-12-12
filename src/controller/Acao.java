@@ -19,7 +19,8 @@ public class Acao implements KeyListener {
 
     private final Set<Integer> teclas = new HashSet<>();
 
-    public Acao() { }
+    public Acao() {
+    }
 
     public Acao(int largura, int altura) {
         this.larguraJanela = largura;
@@ -32,6 +33,7 @@ public class Acao implements KeyListener {
 
     public void setJ(Jogador j) {
         this.j = j;
+        controle = SimpleControleFactory.getInvoker(j);
     }
 
     public void realizarMovimento() {
@@ -39,28 +41,28 @@ public class Acao implements KeyListener {
         if (teclas.contains(KeyEvent.VK_LEFT)) {
             if (isOnLimitBottomX()) {
                 //j.getPosicao().movOeste();
-                SimpleControleFactory.ExecuteCommands(j,0);
+                controle.ExecuteCommands(0);
             }
         }
         if (teclas.contains(KeyEvent.VK_RIGHT)) {
             if (isOnLimitTopX()) {
                 //j.getPosicao().movLeste();
 
-                SimpleControleFactory.ExecuteCommands(j,1);
+                controle.ExecuteCommands(1);
             }
         }
 
         if (teclas.contains(KeyEvent.VK_UP)) {
             if (isOnLimitBottomY()) {
                 //j.getPosicao().movNorte();
-                SimpleControleFactory.ExecuteCommands(j,2);
+                controle.ExecuteCommands(2);
             }
         }
 
         if (teclas.contains(KeyEvent.VK_DOWN)) {
             if (isOnLimitTopY()) {
                 //j.getPosicao().movSul();
-                SimpleControleFactory.ExecuteCommands(j,3);
+                controle.ExecuteCommands(3);
             }
         }
     }
@@ -68,19 +70,19 @@ public class Acao implements KeyListener {
     public void realizaAcao() {
         if (teclas.contains(KeyEvent.VK_SPACE)) {
             //j.atacar();
-            SimpleControleFactory.ExecuteCommands(j, 4);
+            controle.ExecuteCommands(4);
         }
         if (teclas.contains(KeyEvent.VK_A)) {
             //j.magia();
-            SimpleControleFactory.ExecuteCommands(j, 5);
+            controle.ExecuteCommands(5);
         }
         if (teclas.contains(KeyEvent.VK_S)) {
             //j.correr();
-            SimpleControleFactory.ExecuteCommands(j,6);
+            controle.ExecuteCommands(6);
         }
         if (teclas.contains(KeyEvent.VK_D)){
-            j.pular();
-            //SimpleControleFactory.ExecuteCommands(j,7);
+            //j.pular();
+            controle.ExecuteCommands(7);
         }
     }
 

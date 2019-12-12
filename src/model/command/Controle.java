@@ -1,8 +1,5 @@
 package model.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Controle {
 
     private Command slot_botaoR[] = new Command[5];
@@ -15,7 +12,7 @@ public class Controle {
     }
 
     public void setSlot_botaoR(Command command, int n) {
-        this.slot_botaoL[n] = command;
+        this.slot_botaoR[n] = command;
     }
 
     //execute quando o botão for apertado
@@ -23,5 +20,25 @@ public class Controle {
         slot_botaoL[n].execute();
     }
     public void pressBotaoR(int n) {slot_botaoL[n].execute();}
+
+    public void ExecuteCommands(int op) {
+        if (op == 0) {
+            pressBotaoL(0);
+        } else if (op == 1) {
+            pressBotaoL(1);
+        } else if (op == 2) {
+            pressBotaoL(2);
+        } else if (op == 3) {
+            pressBotaoL(3);
+        } else if (op == 4) {
+            pressBotaoR(0);
+        } else if (op == 5) {
+            pressBotaoR(1);
+        } else if (op == 6) {
+            pressBotaoR(2);
+        } else if (op == 7) {
+            pressBotaoR(3);
+        }
+    }
 
 }

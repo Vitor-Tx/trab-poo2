@@ -12,12 +12,7 @@ import model.observer.Jogador;
 
 public class SimpleControleFactory {
 
-    public static Controle getInvoker() {
-        Controle c = new Controle();
-        return c;
-    }
-
-    public static void ExecuteCommands(Jogador j, int op) {
+    public static Controle getInvoker(Jogador j) {
         Controle c = new Controle();
         LeftCommand left = new LeftCommand(j);
         RightCommand right = new RightCommand(j);
@@ -38,23 +33,8 @@ public class SimpleControleFactory {
         c.setSlot_botaoR(magia,1);
         c.setSlot_botaoR(correr,2);
         c.setSlot_botaoR(pular,3);
-
-        if (op == 0) {
-            c.pressBotaoL(0);
-        } else if (op == 1) {
-            c.pressBotaoL(1);
-        } else if (op == 2) {
-            c.pressBotaoL(2);
-        } else if (op == 3) {
-            c.pressBotaoL(3);
-        } else if (op == 4) {
-            c.pressBotaoR(0);
-        } else if (op == 5) {
-            c.pressBotaoR(1);
-        } else if (op == 6) {
-            c.pressBotaoR(2);
-        } else if (op == 7) {
-            c.pressBotaoR(3);
-        }
+        return c;
     }
+
+
 }

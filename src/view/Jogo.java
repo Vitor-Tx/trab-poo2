@@ -2,16 +2,14 @@ package view;
 
 import controller.Acao;
 import controller.AudioPlayer;
-import model.decorator.Item;
 import controller.Posicao;
+import model.decorator.Item;
 import model.factory.FactoryJogador;
 import model.factory.impl.AdvancedJogadorfactory;
 import model.factory.impl.SimpleJogadorfactory;
-import model.observer.impl.Jogador01;
-import model.observer.impl.Jogador02;
-import model.state.impl.EstadoMorto;
 import model.observer.Inimigo;
 import model.observer.Jogador;
+import model.state.impl.EstadoMorto;
 
 import javax.swing.*;
 import java.awt.*;
@@ -197,10 +195,10 @@ public class Jogo extends JPanel {
 
     private Jogador criaEntidade (int op) {
 
-        if (op == 1) {
+        if (op == 0) {
             jogadorFactory = SimpleJogadorfactory.getInstance();
             jogador = jogadorFactory.criaJogador();
-        } else if (op == 2) {
+        } else if (op == 1) {
             jogadorFactory = AdvancedJogadorfactory.getInstance();
             jogador = jogadorFactory.criaJogador();
         }
