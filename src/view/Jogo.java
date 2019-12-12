@@ -1,6 +1,7 @@
 package view;
 
 import controller.Acao;
+import controller.AudioPlayer;
 import model.decorator.Item;
 import controller.Posicao;
 import model.factory.FactoryJogador;
@@ -24,6 +25,7 @@ public class Jogo extends JPanel {
 
     private Jogador jogador;
     private FactoryJogador jogadorFactory;
+
     private JLabel ataqueHUD = new JLabel("");
 
     private List<Inimigo> inimigos = new ArrayList<>();
@@ -43,6 +45,8 @@ public class Jogo extends JPanel {
     public static final String hurtUrl = System.getProperty("user.dir") + "/hurt.wav";
     public static final String inimigoHurtUrl = System.getProperty("user.dir") + "/inimigo-hurt.wav";
     public static final String itemCatchUrl = System.getProperty("user.dir") + "/item-catch.wav";
+    public static final String deathUrl = System.getProperty("user.dir") + "/death-scream.wav";
+    public static final String jumpUrl = System.getProperty("user.dir") + "/jump-sound.wav";
 
     public Jogo() {
         acao = new Acao(larguraJanela, alturaJanela);
@@ -68,6 +72,9 @@ public class Jogo extends JPanel {
             verificaItensPegos();
 
             if (jogador.getEstado() instanceof EstadoMorto || jogador.getInimigos().size() == 0) {
+                if (jogador.getEstado() instanceof EstadoMorto) {
+                    AudioPlayer.playSound(Jogo.deathUrl);
+                }
                 int resposta = JOptionPane.showConfirmDialog(this, "Deseja reiniciar o jogo?", "Confirma\u00e7\u00e3o",
                         JOptionPane.YES_NO_OPTION);
                 if (resposta == JOptionPane.YES_OPTION) {
