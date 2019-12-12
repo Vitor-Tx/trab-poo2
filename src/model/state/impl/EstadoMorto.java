@@ -1,7 +1,7 @@
 package model.state.impl;
 
 import model.state.Estado;
-import model.observer.Personagem;
+import model.Personagem.Personagem;
 
 public class EstadoMorto extends Estado {
 

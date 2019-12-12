@@ -1,4 +1,4 @@
-package model.observer;
+package model.Personagem;
 
 import controller.Acao;
 import view.Jogo;

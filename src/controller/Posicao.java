@@ -1,7 +1,7 @@
 package controller;
 
 import model.decorator.Item;
-import model.observer.Personagem;
+import model.Personagem.Personagem;
 
 public class Posicao {
 

@@ -1,6 +1,6 @@
 package model.composite;
 
-import model.observer.impl.NPC;
+import model.Personagem.impl.NPC;
 
 public abstract class Sala {
 

@@ -1,8 +1,8 @@
 package controller;
 
-import model.command.Controle;
+import controller.command.Controle;
 import model.factory.impl.SimpleControleFactory;
-import model.observer.Jogador;
+import model.Personagem.Jogador;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

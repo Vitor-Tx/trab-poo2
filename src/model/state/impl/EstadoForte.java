@@ -5,7 +5,7 @@ import model.strategy.Ataque;
 import model.strategy.Pulo;
 import model.strategy.Velocidade;
 import model.strategy.impl.*;
-import model.observer.Personagem;
+import model.Personagem.Personagem;
 
 public class EstadoForte extends Estado {
 

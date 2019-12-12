@@ -1,9 +1,9 @@
-package model.observer.impl;
+package model.Personagem.impl;
 
 import model.strategy.impl.AtaqueForte;
 import model.strategy.impl.PuloMedio;
 import model.strategy.impl.VelocidadeMedia;
-import model.observer.Jogador;
+import model.Personagem.Jogador;
 
 public class Jogador01 extends Jogador {
 

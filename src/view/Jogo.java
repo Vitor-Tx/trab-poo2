@@ -7,8 +7,8 @@ import model.decorator.Item;
 import model.factory.FactoryJogador;
 import model.factory.impl.AdvancedJogadorfactory;
 import model.factory.impl.SimpleJogadorfactory;
-import model.observer.Inimigo;
-import model.observer.Jogador;
+import model.Personagem.Inimigo;
+import model.Personagem.Jogador;
 import model.state.impl.EstadoMorto;
 
 import javax.swing.*;

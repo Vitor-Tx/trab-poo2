@@ -1,8 +1,8 @@
 package model.factory.impl;
 
 import model.factory.FactoryJogador;
-import model.observer.Jogador;
-import model.observer.impl.*;
+import model.Personagem.Jogador;
+import model.Personagem.impl.*;
 
 public class SimpleJogadorfactory extends FactoryJogador {
 

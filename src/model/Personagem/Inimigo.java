@@ -1,4 +1,4 @@
-package model.observer;
+package model.Personagem;
 
 import view.Jogo;
 import controller.AudioPlayer;

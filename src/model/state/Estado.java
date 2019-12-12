@@ -5,7 +5,7 @@ import controller.Posicao;
 import model.strategy.Ataque;
 import model.strategy.Pulo;
 import model.strategy.Velocidade;
-import model.observer.Personagem;
+import model.Personagem.Personagem;
 import model.state.impl.EstadoForte;
 import model.state.impl.EstadoMorto;
 import model.state.impl.EstadoNormal;

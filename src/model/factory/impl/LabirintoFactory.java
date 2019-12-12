@@ -4,7 +4,7 @@ import model.composite.Sala;
 import model.composite.impl.Abismo;
 import model.composite.impl.Saida;
 import model.composite.impl.SalaComposta;
-import model.observer.Inimigo;
+import model.Personagem.Inimigo;
 
 public class LabirintoFactory {
 

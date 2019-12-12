@@ -1,7 +1,7 @@
 package model.composite.impl;
 
 import model.composite.Sala;
-import model.observer.impl.NPC;
+import model.Personagem.impl.NPC;
 
 public class Saida extends Sala {
 

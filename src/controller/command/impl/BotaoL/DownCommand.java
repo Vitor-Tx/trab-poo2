@@ -1,7 +1,7 @@
-package model.command.impl.BotaoL;
+package controller.command.impl.BotaoL;
 
-import model.command.Command;
-import model.observer.Jogador;
+import controller.command.Command;
+import model.Personagem.Jogador;
 
 public class DownCommand implements Command {
 

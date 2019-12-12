@@ -1,15 +1,15 @@
 package model.factory.impl;
 
-import model.command.Controle;
-import model.command.impl.BotaoL.DownCommand;
-import model.command.impl.BotaoL.LeftCommand;
-import model.command.impl.BotaoL.RightCommand;
-import model.command.impl.BotaoL.UpCommand;
-import model.command.impl.BotaoR.AtacarCommand;
-import model.command.impl.BotaoR.CorrerCommand;
-import model.command.impl.BotaoR.MagiaCommand;
-import model.command.impl.BotaoR.PularCommand;
-import model.observer.Jogador;
+import controller.command.Controle;
+import controller.command.impl.BotaoL.DownCommand;
+import controller.command.impl.BotaoL.LeftCommand;
+import controller.command.impl.BotaoL.RightCommand;
+import controller.command.impl.BotaoL.UpCommand;
+import controller.command.impl.BotaoR.AtacarCommand;
+import controller.command.impl.BotaoR.CorrerCommand;
+import controller.command.impl.BotaoR.MagiaCommand;
+import controller.command.impl.BotaoR.PularCommand;
+import model.Personagem.Jogador;
 
 public class SimpleControleFactory {
 

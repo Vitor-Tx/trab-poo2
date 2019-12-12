@@ -1,7 +1,7 @@
-package model.command.impl.BotaoR;
+package controller.command.impl.BotaoR;
 
-import model.command.Command;
-import model.observer.Jogador;
+import controller.command.Command;
+import model.Personagem.Jogador;
 
 public class PularCommand implements Command {
 

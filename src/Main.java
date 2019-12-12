@@ -1,6 +1,6 @@
 import model.composite.Sala;
 import model.factory.impl.LabirintoFactory;
-import model.observer.impl.NPC;
+import model.Personagem.impl.NPC;
 import view.Jogo;
 import view.JogoNPC;
 

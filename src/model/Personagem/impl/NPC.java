@@ -1,4 +1,4 @@
-package model.observer.impl;
+package model.Personagem.impl;
 
 public class NPC{
     private String nome;

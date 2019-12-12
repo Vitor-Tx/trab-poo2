@@ -5,7 +5,7 @@ import controller.Posicao;
 import model.decorator.impl.Gelo;
 import model.decorator.impl.Fogo;
 import model.decorator.impl.Veneno;
-import model.observer.Jogador;
+import model.Personagem.Jogador;
 import view.Jogo;
 
 import java.util.Random;

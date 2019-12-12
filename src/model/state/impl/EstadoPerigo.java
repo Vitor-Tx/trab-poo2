@@ -6,7 +6,7 @@ import model.strategy.Pulo;
 import model.strategy.Velocidade;
 import model.strategy.impl.AtaqueFraco;
 import model.strategy.impl.VelocidadeDevagar;
-import model.observer.Personagem;
+import model.Personagem.Personagem;
 
 public class EstadoPerigo extends Estado {
 

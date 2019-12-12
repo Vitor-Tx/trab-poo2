@@ -1,4 +1,4 @@
-package model.command;
+package controller.command;
 
 public interface Command {
 

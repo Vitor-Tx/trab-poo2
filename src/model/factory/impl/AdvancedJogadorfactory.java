@@ -4,7 +4,7 @@ import model.decorator.impl.Fogo;
 import model.decorator.impl.Gelo;
 import model.decorator.impl.Veneno;
 import model.factory.FactoryJogador;
-import model.observer.Jogador;
+import model.Personagem.Jogador;
 import model.strategy.impl.AtaqueForte;
 import model.strategy.impl.AtaqueFraco;
 import model.strategy.impl.AtaqueMedio;

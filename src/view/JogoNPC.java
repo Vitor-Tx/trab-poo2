@@ -1,7 +1,7 @@
 package view;
 
 import model.composite.Sala;
-import model.observer.impl.NPC;
+import model.Personagem.impl.NPC;
 
 public class JogoNPC implements Runnable {
 

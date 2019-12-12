@@ -1,8 +1,8 @@
 package model.composite.impl;
 
 import model.composite.Sala;
-import model.observer.Inimigo;
-import model.observer.impl.NPC;
+import model.Personagem.Inimigo;
+import model.Personagem.impl.NPC;
 
 public class SalaComposta extends Sala {
     public Sala sala1;

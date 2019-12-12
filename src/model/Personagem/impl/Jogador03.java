@@ -1,7 +1,7 @@
-package model.observer.impl;
+package model.Personagem.impl;
 
 import model.strategy.impl.*;
-import model.observer.Jogador;
+import model.Personagem.Jogador;
 
 public class Jogador03 extends Jogador {
 

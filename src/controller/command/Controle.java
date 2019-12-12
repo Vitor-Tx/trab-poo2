@@ -1,4 +1,4 @@
-package model.command;
+package controller.command;
 
 import java.util.ArrayList;
 

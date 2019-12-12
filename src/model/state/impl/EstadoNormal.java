@@ -4,7 +4,7 @@ import model.state.Estado;
 import model.strategy.Ataque;
 import model.strategy.Pulo;
 import model.strategy.Velocidade;
-import model.observer.Personagem;
+import model.Personagem.Personagem;
 
 public class EstadoNormal extends Estado {
 

@@ -1,6 +1,6 @@
 package model.factory;
 
-import model.observer.Jogador;
+import model.Personagem.Jogador;
 
 public abstract class FactoryJogador {
 

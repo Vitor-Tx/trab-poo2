@@ -1,6 +1,6 @@
-package model.observer.impl;
+package model.Personagem.impl;
 
-import model.observer.Jogador;
+import model.Personagem.Jogador;
 import model.strategy.impl.AtaqueFraco;
 import model.strategy.impl.PuloBaixo;
 import model.strategy.impl.VelocidadeDevagar;
