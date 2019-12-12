@@ -69,3 +69,4 @@ fabric.properties
 *.xml
 .idea/misc.xml
 .vscode/launch.json
+*.xml
