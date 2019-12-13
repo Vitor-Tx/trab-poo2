@@ -2,7 +2,7 @@ import model.composite.Sala;
 import model.factory.impl.LabirintoFactory;
 import model.Personagem.impl.NPC;
 import view.Jogo;
-import view.JogoNPC;
+import model.JogoNPC;
 
 import java.util.Scanner;
 

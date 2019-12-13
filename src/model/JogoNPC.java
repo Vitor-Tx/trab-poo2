@@ -1,4 +1,4 @@
-package view;
+package model;
 
 import model.composite.Sala;
 import model.Personagem.impl.NPC;
