@@ -16,7 +16,7 @@ public class Inimigo extends Personagem implements Observer {
 
     private boolean podeAtacar = true;
     private boolean podeAndar = true;
-    private int delay = 1000;
+    private final int delay = 1000;
 
     public Inimigo(int x, int y) {
         super(new PuloBaixo(), new VelocidadeDevagar(), new AtaqueForte());

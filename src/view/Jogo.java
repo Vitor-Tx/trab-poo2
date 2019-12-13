@@ -73,16 +73,12 @@ public class Jogo extends JPanel {
                 if (jogador.getEstado() instanceof EstadoMorto) {
                     AudioPlayer.playSound(Jogo.deathUrl);
                 }
+                limpaInimigos();
                 int resposta = JOptionPane.showConfirmDialog(this, "Deseja reiniciar o jogo?", "Confirma\u00e7\u00e3o",
                         JOptionPane.YES_NO_OPTION);
                 if (resposta == JOptionPane.YES_OPTION) {
                     inicializarEntidades();
                 } else {
-                    int resp = JOptionPane.showConfirmDialog(this, "Deseja ver o log de comandos?", "Confirma\u00e7\u00e3o",
-                            JOptionPane.YES_NO_OPTION);
-                    if (resp == JOptionPane.YES_OPTION) {
-                        acao.getControle().getLog();
-                    }
                     System.exit(0);
                 }
             } else {
@@ -101,8 +97,6 @@ public class Jogo extends JPanel {
 
 //      Faz as bordas ficarem esmaecidas
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        desenhaHUD(g2d);
 
         if (jogador != null) {
             g2d.setColor(Color.BLACK);
@@ -133,11 +127,18 @@ public class Jogo extends JPanel {
                 }
             }
         }
+
+        desenhaHUD(g2d);
     }
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    private void limpaInimigos() {
+        for (Inimigo i : inimigos)
+            i.setEstado(new EstadoMorto(i));
     }
 
     private void inicializarEntidades() {
@@ -188,13 +189,14 @@ public class Jogo extends JPanel {
     private void desenhaHUD(Graphics2D g2d) {
         if (jogador == null) return;
 
-        ataqueHUD.setText("Força de ataque: " + jogador.getAtaque().forca());
+        if (jogador.getAtaque() != null)
+            ataqueHUD.setText("Força de ataque: " + jogador.getAtaque().forca());
 
         g2d.setColor(Color.GREEN);
-        g2d.fillRect(0, alturaJanela - 30, jogador.getSaude() * 5, 40);
+        g2d.fillRect(0, alturaJanela - 50, jogador.getSaude() * 5, 40);
 
         g2d.setColor(Color.BLUE);
-        g2d.fillRect(larguraJanela - (jogador.getEscudo().getCargaTotal() * 5), alturaJanela - 30, jogador.getEscudo().getCargaTotal() * 5, 40);
+        g2d.fillRect(larguraJanela - (jogador.getEscudo().getCargaTotal() * 5), alturaJanela - 50, jogador.getEscudo().getCargaTotal() * 5, 40);
     }
 
     private Jogador criaEntidade (int op) {

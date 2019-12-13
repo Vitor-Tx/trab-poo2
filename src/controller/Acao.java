@@ -76,12 +76,16 @@ public class Acao implements KeyListener {
             controle.ExecuteCommands(5);
         }
         if (teclas.contains(KeyEvent.VK_S)) {
-            //j.correr();
-            controle.ExecuteCommands(6);
+            if (isOnLimitTopX()) {
+                //j.correr();
+                controle.ExecuteCommands(6);
+            }
         }
         if (teclas.contains(KeyEvent.VK_D)){
-            //j.pular();
-            controle.ExecuteCommands(7);
+            if (isOnLimitTopX()) {
+                //j.pular();
+                controle.ExecuteCommands(7);
+            }
         }
     }
 

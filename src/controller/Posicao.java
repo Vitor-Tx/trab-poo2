@@ -74,6 +74,8 @@ public class Posicao {
     }
 
     public void movCorrer() {
+        if (p.getVelocidade() == null) return;
+
         this.x += p.getVelocidade().vel() * 5;
     }
 

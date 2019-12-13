@@ -1,6 +1,7 @@
 package model.Personagem;
 
 import controller.Acao;
+import controller.SetTimeout;
 import view.Jogo;
 import controller.AudioPlayer;
 import model.chain.Escudo;
@@ -24,6 +25,8 @@ public class Jogador extends Personagem {
 
     private Acao acao;
 
+    private boolean podeAtacar = true;
+    private final int delay = 500;
 
     public Jogador(Pulo pulo, Velocidade velocidade, Ataque ataque) {
         super(pulo, velocidade, ataque);
@@ -43,7 +46,7 @@ public class Jogador extends Personagem {
     }
 
     public void atacar() {
-        if (getInimigos().size() == 0) return;
+        if (getInimigos().size() == 0 || !podeAtacar) return;
 
         int je = Jogo.getEsquerda(getPosicao()) - areaAtaque;
         int jd = Jogo.getDireita(getPosicao(), getLargura()) + areaAtaque;
@@ -60,6 +63,9 @@ public class Jogador extends Personagem {
                 i.receberDano(getAtaque().forca());
             }
         }
+
+        podeAtacar = false;
+        SetTimeout.setTimeout(() -> podeAtacar = true, delay);
     }
 
     public void magia() {
