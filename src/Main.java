@@ -25,11 +25,6 @@ public class Main {
         }
 
         else{
-            //Jogador j1, j2, j3;
-
-            //j1 = AdvancedJogadorfactory.getInstance().criaJogador();
-            //j2 = SimpleJogadorfactory.getInstance().criaJogador();
-            //j3 = AdvancedJogadorfactory.getInstance().criaJogador();
 
             Sala labirinto = LabirintoFactory.criaFase();
             NPC npc1, npc2, npc3;
@@ -49,8 +44,6 @@ public class Main {
             t1.start();
             t2.start();
             t3.start();
-
-            labirinto.entrar(npc1);
 
         }
 

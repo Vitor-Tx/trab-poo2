@@ -32,7 +32,7 @@ public class SalaComposta extends Sala {
     @Override
     public Sala entrar(NPC npc) {
         try{
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         }
         catch(Exception e){
         }
@@ -42,32 +42,37 @@ public class SalaComposta extends Sala {
         double r = Math.random() * 2;
 
         if (r < 0.2) {
-            System.out.println("NPC"+ npc.getNome() + " morreu para o inimigo!\n");
+            System.out.println("NPC "+ npc.getNome() + " morreu para o inimigo!\n");
+            return this;
         }
         else if(r < 0.8){
-            System.out.println("NPC"+ npc.getNome() + " teve que fugir do inimigo!\n");
+            System.out.println("NPC "+ npc.getNome() + " teve que fugir do inimigo!\n");
+            proxima(npc);
         }
         else {
-            System.out.println("NPC "+npc.getNome()+" Matou o inimigo! ");
+            System.out.println("NPC "+npc.getNome()+" Matou o inimigo!\n");
+            proxima(npc);
         }
 
 
 
+        return this;
+    }
 
-        r = Math.random() * 2;
+    private void proxima(NPC npc){
+        double r = Math.random() * 2;
 
 
         if (r < 1) {
-            System.out.println("E ele entrou na sala 1!\n");
+            System.out.println(npc.getNome() + " entrou na sala 1!\n");
             sala1.entrar(npc);
         }
         else {
 
-            System.out.println("E ele entrou na sala 2!\n");
+            System.out.println(npc.getNome() + " entrou na sala 2!\n");
             sala2.entrar(npc);
 
         }
 
-        return this;
     }
 }
